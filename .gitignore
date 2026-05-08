@@ -1,0 +1,29 @@
+# Dépendances
+node_modules/
+
+# Build
+dist/
+build/
+
+# Variables d'environnement
+.env
+.env.local
+.env.*.local
+
+# Données locales du backend
+backend/data/sessions.json
+
+# Logs
+*.log
+npm-debug.log*
+bun-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Éditeurs
+.vscode/
+.idea/
+*.swp
+*.swo
