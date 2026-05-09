@@ -4,8 +4,13 @@
       "id": "bench-press",
       "name": "Développé couché",
       "type": "force",
-      "muscles": ["pectoraux (chef sternal)", "triceps", "deltoïde antérieur"],
-      "video": "https://www.youtube.com/watch?v=rT7DgCr-3pg"
+      "muscles": [
+        "pectoraux (chef sternal)",
+        "triceps",
+        "deltoïde antérieur"
+      ],
+      "video": "https://www.youtube.com/watch?v=rT7DgCr-3pg",
+      "equipment": "salle de musculation"
     },
     {
       "id": "incline-bench-press",
@@ -16,28 +21,42 @@
         "triceps",
         "deltoïde antérieur"
       ],
-      "video": "https://www.youtube.com/watch?v=DbFgADa2PL8"
+      "video": "https://www.youtube.com/watch?v=DbFgADa2PL8",
+      "equipment": "salle de musculation"
     },
     {
       "id": "decline-bench-press",
       "name": "Développé décliné barre",
       "type": "force",
-      "muscles": ["pectoraux (chef inférieur)", "triceps"],
-      "video": "https://www.youtube.com/watch?v=LfyQBUKR8SE"
+      "muscles": [
+        "pectoraux (chef inférieur)",
+        "triceps"
+      ],
+      "video": "https://www.youtube.com/watch?v=LfyQBUKR8SE",
+      "equipment": "salle de musculation"
     },
     {
       "id": "dumbbell-press",
       "name": "Développé couché haltères",
       "type": "force",
-      "muscles": ["pectoraux", "triceps", "deltoïde antérieur"],
-      "video": "https://www.youtube.com/watch?v=VmB1G1K7v94"
+      "muscles": [
+        "pectoraux",
+        "triceps",
+        "deltoïde antérieur"
+      ],
+      "video": "https://www.youtube.com/watch?v=VmB1G1K7v94",
+      "equipment": "haltères"
     },
     {
       "id": "incline-dumbbell-press",
       "name": "Développé incliné haltères",
       "type": "force",
-      "muscles": ["pectoraux (chef claviculaire)", "triceps"],
-      "video": "https://www.youtube.com/watch?v=8iPEnn-ltC8"
+      "muscles": [
+        "pectoraux (chef claviculaire)",
+        "triceps"
+      ],
+      "video": "https://www.youtube.com/watch?v=8iPEnn-ltC8",
+      "equipment": "haltères"
     },
     {
       "id": "push-up",
@@ -49,35 +68,51 @@
         "deltoïde antérieur",
         "grand dentelé"
       ],
-      "video": "https://www.youtube.com/watch?v=IODxDxX7oi4"
+      "video": "https://www.youtube.com/watch?v=IODxDxX7oi4",
+      "equipment": "poids du corps"
     },
     {
       "id": "wide-push-up",
       "name": "Pompes écartées",
       "type": "endurance",
-      "muscles": ["pectoraux (chef externe)", "triceps"],
-      "video": "https://www.youtube.com/watch?v=DCTSBSAbBN0"
+      "muscles": [
+        "pectoraux (chef externe)",
+        "triceps"
+      ],
+      "video": "https://www.youtube.com/watch?v=DCTSBSAbBN0",
+      "equipment": "poids du corps"
     },
     {
       "id": "diamond-push-up",
       "name": "Pompes diamant",
       "type": "endurance",
-      "muscles": ["triceps", "pectoraux (chef interne)"],
-      "video": "https://www.youtube.com/watch?v=J0DnG1_S92I"
+      "muscles": [
+        "triceps",
+        "pectoraux (chef interne)"
+      ],
+      "video": "https://www.youtube.com/watch?v=J0DnG1_S92I",
+      "equipment": "poids du corps"
     },
     {
       "id": "cable-fly",
       "name": "Écartés à la poulie",
       "type": "tonification",
-      "muscles": ["pectoraux (isolation)", "deltoïde antérieur"],
-      "video": "https://www.youtube.com/watch?v=Iwe6AmxVf7o"
+      "muscles": [
+        "pectoraux (isolation)",
+        "deltoïde antérieur"
+      ],
+      "video": "https://www.youtube.com/watch?v=Iwe6AmxVf7o",
+      "equipment": "salle de musculation"
     },
     {
       "id": "dumbbell-fly",
       "name": "Écartés haltères",
       "type": "tonification",
-      "muscles": ["pectoraux (isolation)"],
-      "video": "https://www.youtube.com/watch?v=eozdVDA78K0"
+      "muscles": [
+        "pectoraux (isolation)"
+      ],
+      "video": "https://www.youtube.com/watch?v=eozdVDA78K0",
+      "equipment": "haltères"
     },
     {
       "id": "dips-chest",
@@ -88,97 +123,154 @@
         "triceps",
         "deltoïde antérieur"
       ],
-      "video": "https://www.youtube.com/watch?v=2z8JmcrW-As"
+      "video": "https://www.youtube.com/watch?v=2z8JmcrW-As",
+      "equipment": "poids du corps"
     },
     {
       "id": "pec-deck",
       "name": "Pec Deck (butterfly machine)",
       "type": "tonification",
-      "muscles": ["pectoraux (isolation)"],
-      "video": "https://www.youtube.com/watch?v=Z57CtFmRMxA"
+      "muscles": [
+        "pectoraux (isolation)"
+      ],
+      "video": "https://www.youtube.com/watch?v=Z57CtFmRMxA",
+      "equipment": "salle de musculation"
     }
   ],
-
   "dos": [
     {
       "id": "pull-up",
       "name": "Tractions (pronation)",
       "type": "force",
-      "muscles": ["grand dorsal", "rhomboïdes", "biceps", "infraépineux"],
-      "video": "https://www.youtube.com/watch?v=eGo4IYlbE5g"
+      "muscles": [
+        "grand dorsal",
+        "rhomboïdes",
+        "biceps",
+        "infraépineux"
+      ],
+      "video": "https://www.youtube.com/watch?v=eGo4IYlbE5g",
+      "equipment": "poids du corps"
     },
     {
       "id": "chin-up",
       "name": "Tractions (supination)",
       "type": "force",
-      "muscles": ["grand dorsal", "biceps", "rhomboïdes"],
-      "video": "https://www.youtube.com/watch?v=sIiogEvhabc"
+      "muscles": [
+        "grand dorsal",
+        "biceps",
+        "rhomboïdes"
+      ],
+      "video": "https://www.youtube.com/watch?v=sIiogEvhabc",
+      "equipment": "poids du corps"
     },
     {
       "id": "row-barbell",
       "name": "Rowing barre",
       "type": "force",
-      "muscles": ["grand dorsal", "rhomboïdes", "trapèze moyen", "biceps"],
-      "video": "https://www.youtube.com/watch?v=G8l_8chR5BE"
+      "muscles": [
+        "grand dorsal",
+        "rhomboïdes",
+        "trapèze moyen",
+        "biceps"
+      ],
+      "video": "https://www.youtube.com/watch?v=G8l_8chR5BE",
+      "equipment": "salle de musculation"
     },
     {
       "id": "row-dumbbell",
       "name": "Rowing haltère unilatéral",
       "type": "force",
-      "muscles": ["grand dorsal", "rhomboïdes", "biceps"],
-      "video": "https://www.youtube.com/watch?v=roCP6wCXPqo"
+      "muscles": [
+        "grand dorsal",
+        "rhomboïdes",
+        "biceps"
+      ],
+      "video": "https://www.youtube.com/watch?v=roCP6wCXPqo",
+      "equipment": "haltères"
     },
     {
       "id": "lat-pulldown",
       "name": "Tirage vertical (poulie haute)",
       "type": "tonification",
-      "muscles": ["grand dorsal", "biceps", "rhomboïdes"],
-      "video": "https://www.youtube.com/watch?v=CAwf7n6Luuc"
+      "muscles": [
+        "grand dorsal",
+        "biceps",
+        "rhomboïdes"
+      ],
+      "video": "https://www.youtube.com/watch?v=CAwf7n6Luuc",
+      "equipment": "salle de musculation"
     },
     {
       "id": "seated-row",
       "name": "Rowing assis à la poulie",
       "type": "endurance",
-      "muscles": ["grand dorsal", "rhomboïdes", "trapèze moyen", "biceps"],
-      "video": "https://www.youtube.com/watch?v=GZbfZ033f74"
+      "muscles": [
+        "grand dorsal",
+        "rhomboïdes",
+        "trapèze moyen",
+        "biceps"
+      ],
+      "video": "https://www.youtube.com/watch?v=GZbfZ033f74",
+      "equipment": "salle de musculation"
     },
     {
       "id": "face-pull",
       "name": "Face pull",
       "type": "tonification",
-      "muscles": ["deltoïde postérieur", "trapèze", "infraépineux"],
-      "video": "https://www.youtube.com/watch?v=rep-qVOkqgk"
+      "muscles": [
+        "deltoïde postérieur",
+        "trapèze",
+        "infraépineux"
+      ],
+      "video": "https://www.youtube.com/watch?v=rep-qVOkqgk",
+      "equipment": "salle de musculation"
     },
     {
       "id": "deadlift-romanian",
       "name": "Soulevé de terre roumain",
       "type": "force",
-      "muscles": ["ischio-jambiers", "grand fessier", "érecteurs du rachis"],
-      "video": "https://www.youtube.com/watch?v=JCXUYuzwNrM"
+      "muscles": [
+        "ischio-jambiers",
+        "grand fessier",
+        "érecteurs du rachis"
+      ],
+      "video": "https://www.youtube.com/watch?v=JCXUYuzwNrM",
+      "equipment": "salle de musculation"
     },
     {
       "id": "hyperextension",
       "name": "Hyperextension lombaire",
       "type": "endurance",
-      "muscles": ["érecteurs du rachis", "grand fessier", "ischio-jambiers"],
-      "video": "https://www.youtube.com/watch?v=ph3pddpKzzw"
+      "muscles": [
+        "érecteurs du rachis",
+        "grand fessier",
+        "ischio-jambiers"
+      ],
+      "video": "https://www.youtube.com/watch?v=ph3pddpKzzw",
+      "equipment": "poids du corps"
     },
     {
       "id": "shrug",
       "name": "Haussements d'épaules (shrugs)",
       "type": "tonification",
-      "muscles": ["trapèze supérieur"],
-      "video": "https://www.youtube.com/watch?v=g6qbq4Lf1FI"
+      "muscles": [
+        "trapèze supérieur"
+      ],
+      "video": "https://www.youtube.com/watch?v=g6qbq4Lf1FI",
+      "equipment": "haltères"
     },
     {
       "id": "straight-arm-pulldown",
       "name": "Tirage bras tendus",
       "type": "tonification",
-      "muscles": ["grand dorsal (isolation)", "grand dentelé"],
-      "video": "https://www.youtube.com/watch?v=oSVPSHLBW5k"
+      "muscles": [
+        "grand dorsal (isolation)",
+        "grand dentelé"
+      ],
+      "video": "https://www.youtube.com/watch?v=oSVPSHLBW5k",
+      "equipment": "salle de musculation"
     }
   ],
-
   "jambes": [
     {
       "id": "squat",
@@ -190,94 +282,148 @@
         "ischio-jambiers",
         "érecteurs du rachis"
       ],
-      "video": "https://www.youtube.com/watch?v=ultWZbUMPL8"
+      "video": "https://www.youtube.com/watch?v=ultWZbUMPL8",
+      "equipment": "salle de musculation"
     },
     {
       "id": "front-squat",
       "name": "Squat avant",
       "type": "force",
-      "muscles": ["quadriceps", "grand fessier", "abdominaux"],
-      "video": "https://www.youtube.com/watch?v=uYumuL_G_V0"
+      "muscles": [
+        "quadriceps",
+        "grand fessier",
+        "abdominaux"
+      ],
+      "video": "https://www.youtube.com/watch?v=uYumuL_G_V0",
+      "equipment": "salle de musculation"
     },
     {
       "id": "goblet-squat",
       "name": "Goblet squat",
       "type": "endurance",
-      "muscles": ["quadriceps", "grand fessier", "adducteurs"],
-      "video": "https://www.youtube.com/watch?v=MeIiIdhvXT4"
+      "muscles": [
+        "quadriceps",
+        "grand fessier",
+        "adducteurs"
+      ],
+      "video": "https://www.youtube.com/watch?v=MeIiIdhvXT4",
+      "equipment": "haltères"
     },
     {
       "id": "leg-press",
       "name": "Presse à cuisses",
       "type": "force",
-      "muscles": ["quadriceps", "grand fessier", "ischio-jambiers"],
-      "video": "https://www.youtube.com/watch?v=IZxyjW7MPJQ"
+      "muscles": [
+        "quadriceps",
+        "grand fessier",
+        "ischio-jambiers"
+      ],
+      "video": "https://www.youtube.com/watch?v=IZxyjW7MPJQ",
+      "equipment": "salle de musculation"
     },
     {
       "id": "lunge",
       "name": "Fentes avant",
       "type": "tonification",
-      "muscles": ["quadriceps", "grand fessier", "ischio-jambiers"],
-      "video": "https://www.youtube.com/watch?v=QOVaHwm-Q6U"
+      "muscles": [
+        "quadriceps",
+        "grand fessier",
+        "ischio-jambiers"
+      ],
+      "video": "https://www.youtube.com/watch?v=QOVaHwm-Q6U",
+      "equipment": "poids du corps"
     },
     {
       "id": "walking-lunge",
       "name": "Fentes marchées",
       "type": "endurance",
-      "muscles": ["quadriceps", "grand fessier", "ischio-jambiers"],
-      "video": "https://www.youtube.com/watch?v=L8fvypPrv8s"
+      "muscles": [
+        "quadriceps",
+        "grand fessier",
+        "ischio-jambiers"
+      ],
+      "video": "https://www.youtube.com/watch?v=L8fvypPrv8s",
+      "equipment": "poids du corps"
     },
     {
       "id": "bulgarian-split-squat",
       "name": "Squat bulgare",
       "type": "force",
-      "muscles": ["quadriceps", "grand fessier", "ischio-jambiers"],
-      "video": "https://www.youtube.com/watch?v=2C-uNgKwPLE"
+      "muscles": [
+        "quadriceps",
+        "grand fessier",
+        "ischio-jambiers"
+      ],
+      "video": "https://www.youtube.com/watch?v=2C-uNgKwPLE",
+      "equipment": "poids du corps"
     },
     {
       "id": "leg-curl",
       "name": "Leg curl allongé",
       "type": "endurance",
-      "muscles": ["ischio-jambiers (isolation)"],
-      "video": "https://www.youtube.com/watch?v=1Tq3QdYUuHs"
+      "muscles": [
+        "ischio-jambiers (isolation)"
+      ],
+      "video": "https://www.youtube.com/watch?v=1Tq3QdYUuHs",
+      "equipment": "salle de musculation"
     },
     {
       "id": "leg-extension",
       "name": "Leg extension",
       "type": "tonification",
-      "muscles": ["quadriceps (isolation)"],
-      "video": "https://www.youtube.com/watch?v=YyvSfVjQeL0"
+      "muscles": [
+        "quadriceps (isolation)"
+      ],
+      "video": "https://www.youtube.com/watch?v=YyvSfVjQeL0",
+      "equipment": "salle de musculation"
     },
     {
       "id": "hip-thrust",
       "name": "Hip thrust",
       "type": "force",
-      "muscles": ["grand fessier (isolation)", "ischio-jambiers"],
-      "video": "https://www.youtube.com/watch?v=xDmFkJxPzeM"
+      "muscles": [
+        "grand fessier (isolation)",
+        "ischio-jambiers"
+      ],
+      "video": "https://www.youtube.com/watch?v=xDmFkJxPzeM",
+      "equipment": "salle de musculation"
     },
     {
       "id": "sumo-squat",
       "name": "Squat sumo",
       "type": "tonification",
-      "muscles": ["adducteurs", "grand fessier", "quadriceps"],
-      "video": "https://www.youtube.com/watch?v=YUf_fVeGxGM"
+      "muscles": [
+        "adducteurs",
+        "grand fessier",
+        "quadriceps"
+      ],
+      "video": "https://www.youtube.com/watch?v=YUf_fVeGxGM",
+      "equipment": "haltères"
     },
     {
       "id": "calf-raise",
       "name": "Élévations mollets",
       "type": "endurance",
-      "muscles": ["gastrocnémiens", "soléaire"],
-      "video": "https://www.youtube.com/watch?v=-M4-G8p1fCI"
+      "muscles": [
+        "gastrocnémiens",
+        "soléaire"
+      ],
+      "video": "https://www.youtube.com/watch?v=-M4-G8p1fCI",
+      "equipment": "poids du corps"
     },
     {
       "id": "step-up",
       "name": "Step-up",
       "type": "endurance",
-      "muscles": ["quadriceps", "grand fessier", "ischio-jambiers"],
-      "video": "https://www.youtube.com/watch?v=dQqApCGd5Ss"
+      "muscles": [
+        "quadriceps",
+        "grand fessier",
+        "ischio-jambiers"
+      ],
+      "video": "https://www.youtube.com/watch?v=dQqApCGd5Ss",
+      "equipment": "poids du corps"
     }
   ],
-
   "épaules": [
     {
       "id": "ohp",
@@ -289,14 +435,20 @@
         "triceps",
         "trapèze"
       ],
-      "video": "https://www.youtube.com/watch?v=2yjwXTZQDDI"
+      "video": "https://www.youtube.com/watch?v=2yjwXTZQDDI",
+      "equipment": "salle de musculation"
     },
     {
       "id": "dumbbell-ohp",
       "name": "Développé militaire haltères",
       "type": "force",
-      "muscles": ["deltoïde antérieur", "deltoïde médial", "triceps"],
-      "video": "https://www.youtube.com/watch?v=qEwKCR5JCog"
+      "muscles": [
+        "deltoïde antérieur",
+        "deltoïde médial",
+        "triceps"
+      ],
+      "video": "https://www.youtube.com/watch?v=qEwKCR5JCog",
+      "equipment": "haltères"
     },
     {
       "id": "arnold-press",
@@ -307,146 +459,215 @@
         "deltoïde médial",
         "deltoïde postérieur"
       ],
-      "video": "https://www.youtube.com/watch?v=6Z15_WdXmVw"
+      "video": "https://www.youtube.com/watch?v=6Z15_WdXmVw",
+      "equipment": "haltères"
     },
     {
       "id": "lateral-raise",
       "name": "Élévations latérales haltères",
       "type": "tonification",
-      "muscles": ["deltoïde médial (isolation)"],
-      "video": "https://www.youtube.com/watch?v=3VcKaXpzqRo"
+      "muscles": [
+        "deltoïde médial (isolation)"
+      ],
+      "video": "https://www.youtube.com/watch?v=3VcKaXpzqRo",
+      "equipment": "haltères"
     },
     {
       "id": "cable-lateral-raise",
       "name": "Élévations latérales poulie",
       "type": "tonification",
-      "muscles": ["deltoïde médial (isolation)"],
-      "video": "https://www.youtube.com/watch?v=PPzMvNBm8No"
+      "muscles": [
+        "deltoïde médial (isolation)"
+      ],
+      "video": "https://www.youtube.com/watch?v=PPzMvNBm8No",
+      "equipment": "salle de musculation"
     },
     {
       "id": "front-raise",
       "name": "Élévations frontales",
       "type": "tonification",
-      "muscles": ["deltoïde antérieur (isolation)"],
-      "video": "https://www.youtube.com/watch?v=sOoBQD_0gXk"
+      "muscles": [
+        "deltoïde antérieur (isolation)"
+      ],
+      "video": "https://www.youtube.com/watch?v=sOoBQD_0gXk",
+      "equipment": "haltères"
     },
     {
       "id": "reverse-fly",
       "name": "Oiseau (deltoïde postérieur)",
       "type": "tonification",
-      "muscles": ["deltoïde postérieur", "rhomboïdes", "trapèze"],
-      "video": "https://www.youtube.com/watch?v=ttvAMHbAME0"
+      "muscles": [
+        "deltoïde postérieur",
+        "rhomboïdes",
+        "trapèze"
+      ],
+      "video": "https://www.youtube.com/watch?v=ttvAMHbAME0",
+      "equipment": "haltères"
     },
     {
       "id": "upright-row",
       "name": "Tirage menton",
       "type": "endurance",
-      "muscles": ["deltoïde médial", "trapèze supérieur", "biceps"],
-      "video": "https://www.youtube.com/watch?v=Um3ZpE8vPEc"
+      "muscles": [
+        "deltoïde médial",
+        "trapèze supérieur",
+        "biceps"
+      ],
+      "video": "https://www.youtube.com/watch?v=Um3ZpE8vPEc",
+      "equipment": "haltères"
     },
     {
       "id": "pike-push-up",
       "name": "Pompes en pike",
       "type": "endurance",
-      "muscles": ["deltoïde antérieur", "triceps"],
-      "video": "https://www.youtube.com/watch?v=x7_I5SUAd00"
+      "muscles": [
+        "deltoïde antérieur",
+        "triceps"
+      ],
+      "video": "https://www.youtube.com/watch?v=x7_I5SUAd00",
+      "equipment": "poids du corps"
     }
   ],
-
   "bras": [
     {
       "id": "bicep-curl-bar",
       "name": "Curl barre EZ",
       "type": "force",
-      "muscles": ["biceps brachial", "brachial", "brachioradial"],
-      "video": "https://www.youtube.com/watch?v=kwG2ipFRgfo"
+      "muscles": [
+        "biceps brachial",
+        "brachial",
+        "brachioradial"
+      ],
+      "video": "https://www.youtube.com/watch?v=kwG2ipFRgfo",
+      "equipment": "salle de musculation"
     },
     {
       "id": "bicep-curl-dumbbell",
       "name": "Curl haltères",
       "type": "tonification",
-      "muscles": ["biceps brachial", "brachial"],
-      "video": "https://www.youtube.com/watch?v=ykJmrZ5v0Oo"
+      "muscles": [
+        "biceps brachial",
+        "brachial"
+      ],
+      "video": "https://www.youtube.com/watch?v=ykJmrZ5v0Oo",
+      "equipment": "haltères"
     },
     {
       "id": "hammer-curl",
       "name": "Curl marteau",
       "type": "force",
-      "muscles": ["brachial", "brachioradial", "biceps brachial"],
-      "video": "https://www.youtube.com/watch?v=zC3nLlEvin4"
+      "muscles": [
+        "brachial",
+        "brachioradial",
+        "biceps brachial"
+      ],
+      "video": "https://www.youtube.com/watch?v=zC3nLlEvin4",
+      "equipment": "haltères"
     },
     {
       "id": "concentration-curl",
       "name": "Curl concentré",
       "type": "tonification",
-      "muscles": ["biceps brachial (isolation)"],
-      "video": "https://www.youtube.com/watch?v=0AUGkch3tzc"
+      "muscles": [
+        "biceps brachial (isolation)"
+      ],
+      "video": "https://www.youtube.com/watch?v=0AUGkch3tzc",
+      "equipment": "haltères"
     },
     {
       "id": "cable-curl",
       "name": "Curl à la poulie",
       "type": "endurance",
-      "muscles": ["biceps brachial", "brachial"],
-      "video": "https://www.youtube.com/watch?v=NFzTWp2qpiE"
+      "muscles": [
+        "biceps brachial",
+        "brachial"
+      ],
+      "video": "https://www.youtube.com/watch?v=NFzTWp2qpiE",
+      "equipment": "salle de musculation"
     },
     {
       "id": "preacher-curl",
       "name": "Curl pupitre",
       "type": "tonification",
-      "muscles": ["biceps brachial (isolation, chef court)"],
-      "video": "https://www.youtube.com/watch?v=fIWP-FRFNU0"
+      "muscles": [
+        "biceps brachial (isolation, chef court)"
+      ],
+      "video": "https://www.youtube.com/watch?v=fIWP-FRFNU0",
+      "equipment": "salle de musculation"
     },
     {
       "id": "tricep-pushdown",
       "name": "Pushdown triceps (poulie haute)",
       "type": "tonification",
-      "muscles": ["triceps (isolation)"],
-      "video": "https://www.youtube.com/watch?v=2-LAMcpzODU"
+      "muscles": [
+        "triceps (isolation)"
+      ],
+      "video": "https://www.youtube.com/watch?v=2-LAMcpzODU",
+      "equipment": "salle de musculation"
     },
     {
       "id": "skull-crusher",
       "name": "Skull crusher",
       "type": "force",
-      "muscles": ["triceps (chef long)", "triceps (chef latéral)"],
-      "video": "https://www.youtube.com/watch?v=d_KZxkY_0cM"
+      "muscles": [
+        "triceps (chef long)",
+        "triceps (chef latéral)"
+      ],
+      "video": "https://www.youtube.com/watch?v=d_KZxkY_0cM",
+      "equipment": "salle de musculation"
     },
     {
       "id": "tricep-ext",
       "name": "Extension triceps haltère",
       "type": "tonification",
-      "muscles": ["triceps (chef long)"],
-      "video": "https://www.youtube.com/watch?v=nRiJVZDpdL0"
+      "muscles": [
+        "triceps (chef long)"
+      ],
+      "video": "https://www.youtube.com/watch?v=nRiJVZDpdL0",
+      "equipment": "haltères"
     },
     {
       "id": "overhead-tricep-cable",
       "name": "Extension triceps poulie haute",
       "type": "endurance",
-      "muscles": ["triceps (chef long)"],
-      "video": "https://www.youtube.com/watch?v=kjXsiq3mEv8"
+      "muscles": [
+        "triceps (chef long)"
+      ],
+      "video": "https://www.youtube.com/watch?v=kjXsiq3mEv8",
+      "equipment": "salle de musculation"
     },
     {
       "id": "dips-triceps",
       "name": "Dips banc (triceps)",
       "type": "endurance",
-      "muscles": ["triceps", "deltoïde antérieur"],
-      "video": "https://www.youtube.com/watch?v=0326dy_-CzM"
+      "muscles": [
+        "triceps",
+        "deltoïde antérieur"
+      ],
+      "video": "https://www.youtube.com/watch?v=0326dy_-CzM",
+      "equipment": "poids du corps"
     },
     {
       "id": "wrist-curl",
       "name": "Curl poignet",
       "type": "tonification",
-      "muscles": ["fléchisseurs de l'avant-bras"],
-      "video": "https://www.youtube.com/watch?v=6a7T7JnLHqQ"
+      "muscles": [
+        "fléchisseurs de l'avant-bras"
+      ],
+      "video": "https://www.youtube.com/watch?v=6a7T7JnLHqQ",
+      "equipment": "haltères"
     }
   ],
-
   "abdominaux": [
     {
       "id": "crunch",
       "name": "Crunch classique",
       "type": "endurance",
-      "muscles": ["grand droit de l'abdomen (chef supérieur)"],
-      "video": "https://www.youtube.com/watch?v=Xyd_fa5zoEU"
+      "muscles": [
+        "grand droit de l'abdomen (chef supérieur)"
+      ],
+      "video": "https://www.youtube.com/watch?v=Xyd_fa5zoEU",
+      "equipment": "poids du corps"
     },
     {
       "id": "plank",
@@ -458,42 +679,67 @@
         "obliques",
         "érecteurs du rachis"
       ],
-      "video": "https://www.youtube.com/watch?v=ASdvN_XEl_c"
+      "video": "https://www.youtube.com/watch?v=ASdvN_XEl_c",
+      "equipment": "poids du corps"
     },
     {
       "id": "side-plank",
       "name": "Gainage latéral",
       "type": "endurance",
-      "muscles": ["obliques", "transverse", "carré des lombes"],
-      "video": "https://www.youtube.com/watch?v=_6vjo5yFo1U"
+      "muscles": [
+        "obliques",
+        "transverse",
+        "carré des lombes"
+      ],
+      "video": "https://www.youtube.com/watch?v=_6vjo5yFo1U",
+      "equipment": "poids du corps"
     },
     {
       "id": "leg-raise",
       "name": "Relevés de jambes",
       "type": "force",
-      "muscles": ["grand droit (chef inférieur)", "iliopsoas", "quadriceps"],
-      "video": "https://www.youtube.com/watch?v=l4kQd9eWclE"
+      "muscles": [
+        "grand droit (chef inférieur)",
+        "iliopsoas",
+        "quadriceps"
+      ],
+      "video": "https://www.youtube.com/watch?v=l4kQd9eWclE",
+      "equipment": "poids du corps"
     },
     {
       "id": "hanging-leg-raise",
       "name": "Relevés de jambes à la barre",
       "type": "force",
-      "muscles": ["grand droit (chef inférieur)", "iliopsoas", "grand dorsal"],
-      "video": "https://www.youtube.com/watch?v=hdng3Nm1x_E"
+      "muscles": [
+        "grand droit (chef inférieur)",
+        "iliopsoas",
+        "grand dorsal"
+      ],
+      "video": "https://www.youtube.com/watch?v=hdng3Nm1x_E",
+      "equipment": "poids du corps"
     },
     {
       "id": "russian-twist",
       "name": "Russian twist",
       "type": "tonification",
-      "muscles": ["obliques", "grand droit"],
-      "video": "https://www.youtube.com/watch?v=wkD8rjkodUI"
+      "muscles": [
+        "obliques",
+        "grand droit"
+      ],
+      "video": "https://www.youtube.com/watch?v=wkD8rjkodUI",
+      "equipment": "poids du corps"
     },
     {
       "id": "ab-wheel",
       "name": "Roue abdominale",
       "type": "force",
-      "muscles": ["grand droit", "transverse", "grand dorsal"],
-      "video": "https://www.youtube.com/watch?v=j0nvnzU8OAQ"
+      "muscles": [
+        "grand droit",
+        "transverse",
+        "grand dorsal"
+      ],
+      "video": "https://www.youtube.com/watch?v=j0nvnzU8OAQ",
+      "equipment": "poids du corps"
     },
     {
       "id": "mountain-climber",
@@ -505,17 +751,20 @@
         "iliopsoas",
         "deltoïde antérieur"
       ],
-      "video": "https://www.youtube.com/watch?v=nmwgirgXLYM"
+      "video": "https://www.youtube.com/watch?v=nmwgirgXLYM",
+      "equipment": "poids du corps"
     },
     {
       "id": "cable-crunch",
       "name": "Crunch à la poulie",
       "type": "force",
-      "muscles": ["grand droit (isolation)"],
-      "video": "https://www.youtube.com/watch?v=2fbujeH3F0E"
+      "muscles": [
+        "grand droit (isolation)"
+      ],
+      "video": "https://www.youtube.com/watch?v=2fbujeH3F0E",
+      "equipment": "salle de musculation"
     }
   ],
-
   "full body": [
     {
       "id": "deadlift",
@@ -529,7 +778,8 @@
         "ischio-jambiers",
         "quadriceps"
       ],
-      "video": "https://www.youtube.com/watch?v=op9kVnSso6Q"
+      "video": "https://www.youtube.com/watch?v=op9kVnSso6Q",
+      "equipment": "salle de musculation"
     },
     {
       "id": "clean-press",
@@ -542,7 +792,8 @@
         "deltoïde",
         "triceps"
       ],
-      "video": "https://www.youtube.com/watch?v=wNn_2hKd5wA"
+      "video": "https://www.youtube.com/watch?v=wNn_2hKd5wA",
+      "equipment": "salle de musculation"
     },
     {
       "id": "burpee",
@@ -556,7 +807,8 @@
         "grand fessier",
         "abdominaux"
       ],
-      "video": "https://www.youtube.com/watch?v=TU8QYVW0gDU"
+      "video": "https://www.youtube.com/watch?v=TU8QYVW0gDU",
+      "equipment": "poids du corps"
     },
     {
       "id": "kettlebell-swing",
@@ -568,7 +820,8 @@
         "érecteurs du rachis",
         "trapèze"
       ],
-      "video": "https://www.youtube.com/watch?v=YSxHifyI6s8"
+      "video": "https://www.youtube.com/watch?v=YSxHifyI6s8",
+      "equipment": "kettlebell"
     },
     {
       "id": "thruster",
@@ -581,7 +834,8 @@
         "triceps",
         "abdominaux"
       ],
-      "video": "https://www.youtube.com/watch?v=ioLMWt4AGBA"
+      "video": "https://www.youtube.com/watch?v=ioLMWt4AGBA",
+      "equipment": "salle de musculation"
     },
     {
       "id": "turkish-get-up",
@@ -594,7 +848,8 @@
         "quadriceps",
         "érecteurs du rachis"
       ],
-      "video": "https://www.youtube.com/watch?v=0bR6pDpAEHE"
+      "video": "https://www.youtube.com/watch?v=0bR6pDpAEHE",
+      "equipment": "kettlebell"
     },
     {
       "id": "man-maker",
@@ -608,21 +863,34 @@
         "quadriceps",
         "abdominaux"
       ],
-      "video": "https://www.youtube.com/watch?v=nMSM_ER_4SI"
+      "video": "https://www.youtube.com/watch?v=nMSM_ER_4SI",
+      "equipment": "haltères"
     },
     {
       "id": "box-jump",
       "name": "Box jump",
       "type": "endurance",
-      "muscles": ["quadriceps", "grand fessier", "mollets"],
-      "video": "https://www.youtube.com/watch?v=52r_Ul5k03g"
+      "muscles": [
+        "quadriceps",
+        "grand fessier",
+        "mollets"
+      ],
+      "video": "https://www.youtube.com/watch?v=52r_Ul5k03g",
+      "equipment": "poids du corps"
     },
     {
       "id": "pull-push",
       "name": "Traction + Pompe (superset)",
       "type": "endurance",
-      "muscles": ["grand dorsal", "biceps", "pectoraux", "triceps", "deltoïde"],
-      "video": "https://www.youtube.com/watch?v=7jSGHkSMOA4"
+      "muscles": [
+        "grand dorsal",
+        "biceps",
+        "pectoraux",
+        "triceps",
+        "deltoïde"
+      ],
+      "video": "https://www.youtube.com/watch?v=7jSGHkSMOA4",
+      "equipment": "poids du corps"
     },
     {
       "id": "farmers-carry",
@@ -635,7 +903,8 @@
         "quadriceps",
         "grand fessier"
       ],
-      "video": "https://www.youtube.com/watch?v=Fkzk_RqlYig"
+      "video": "https://www.youtube.com/watch?v=Fkzk_RqlYig",
+      "equipment": "haltères"
     }
   ]
 }

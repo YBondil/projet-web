@@ -4,6 +4,7 @@ import Configure from "./pages/configure.jsx";
 import Training from "./pages/training.jsx";
 import Progress from "./pages/progress.jsx";
 import ExercisesInspect from "./pages/exercises.jsx";
+import SavedSessions from "./pages/saved.jsx";
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
       <Route path="/training" component={Training} />
       <Route path="/progress" component={Progress} />
       <Route path="/exercises" component={ExercisesInspect} />
+      <Route path="/saved" component={SavedSessions} />
     </Router>
   );
 }

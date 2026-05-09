@@ -1,4 +1,5 @@
-import exercises from "./exo.json";
+import { allExercises } from "../store/exercises.js";
+import { filterByEquipment } from "./equipment.js";
 
 const PARAMS = {
   endurance: { series: 3, reps: "15-20", repos: 45, secondesParSerie: 40 },
@@ -82,20 +83,35 @@ function normalizeMuscle(muscle) {
 function primaryMuscle(exo) {
   return normalizeMuscle(exo.muscles[0]);
 }
-function dureeExercice(params) {
+export function dureeExercice(params) {
   const secondesRepos = params.repos * (params.series - 1);
   return Math.ceil(
     (params.series * params.secondesParSerie + secondesRepos) / 60,
   );
 }
 
+export function attachParams(exo, params) {
+  return {
+    ...exo,
+    series: params.series,
+    reps: params.reps,
+    repos: params.repos,
+    dureeTotale: dureeExercice(params),
+  };
+}
+
+export function recomputeEstimate(session) {
+  return session.exercises.length * dureeExercice(session.params) + 10;
+}
+
 function shuffle(arr) {
   return [...arr].sort(() => Math.random() - 0.5);
 }
 
-export function generateTraining({ musculaire, duree, objectif }) {
+export function generateTraining({ musculaire, duree, objectif, equipement }) {
   const params = PARAMS[objectif];
-  const pool = exercises[musculaire] || [];
+  const rawPool = allExercises()[musculaire] || [];
+  const pool = filterByEquipment(rawPool, equipement);
   const muscleOrder = MUSCLE_ORDER[musculaire] || [];
 
   const minutesDispos = duree - 10; // 10 min pour l'échauffement
@@ -161,6 +177,7 @@ export function generateTraining({ musculaire, duree, objectif }) {
     musculaire,
     duree,
     objectif,
+    equipement,
     params,
     exercises: exercisesWithParams,
     dureeEstimee: selection.length * minutesParExo + 10,
