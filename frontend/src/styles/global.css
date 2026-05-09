@@ -1,0 +1,642 @@
+/* ================================================================== */
+/* Variables                                                            */
+/* ================================================================== */
+
+:root {
+  --primary: #6c63ff;
+  --primary-dim: rgba(108, 99, 255, 0.15);
+  --bg: #0f0f13;
+  --surface: #1a1a24;
+  --surface-2: #22222e;
+  --text: #f0f0f5;
+  --muted: #6b6b7a;
+  --border: #2a2a38;
+  --radius: 12px;
+  --t: 150ms ease;
+}
+
+/* ================================================================== */
+/* Reset & Base                                                         */
+/* ================================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: opacity var(--t);
+}
+
+a:hover {
+  opacity: 0.75;
+}
+
+/* ================================================================== */
+/* Generic buttons                                                      */
+/* ================================================================== */
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 0.9rem 2rem;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: opacity var(--t), transform var(--t);
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0.9rem 2rem;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  transition: background var(--t);
+}
+
+.btn-secondary:hover {
+  background: var(--surface-2);
+}
+
+.btn-back {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0.25rem 0;
+  transition: color var(--t);
+  flex-shrink: 0;
+}
+
+.btn-back:hover {
+  color: var(--text);
+}
+
+/* ================================================================== */
+/* Shared header (exercises, training, progress, configure)            */
+/* ================================================================== */
+
+.exercises-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.exercises-header h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+/* ================================================================== */
+/* Home                                                                 */
+/* ================================================================== */
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 28vh;
+}
+
+.home h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  background: linear-gradient(135deg, #fff 30%, var(--primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  color: var(--muted);
+  margin: 0.75rem 0 2.5rem;
+  font-size: 1rem;
+}
+
+.btn-generate {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: var(--radius);
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  max-width: 320px;
+  transition: opacity var(--t), transform var(--t), box-shadow var(--t);
+  box-shadow: 0 4px 24px rgba(108, 99, 255, 0.3);
+}
+
+.btn-generate:hover {
+  opacity: 0.92;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(108, 99, 255, 0.4);
+}
+
+.btn-generate:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.btn-progress {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0.85rem 2rem;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  max-width: 320px;
+  margin-top: 0.75rem;
+  transition: background var(--t), border-color var(--t);
+}
+
+.btn-progress:hover {
+  background: var(--surface-2);
+  border-color: #3a3a50;
+}
+
+.btn-exoinspect {
+  background: transparent;
+  color: var(--muted);
+  border: none;
+  padding: 0.6rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  width: 100%;
+  max-width: 320px;
+  margin-top: 0.5rem;
+  transition: color var(--t);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--border);
+}
+
+.btn-exoinspect:hover {
+  color: var(--text);
+  text-decoration-color: var(--muted);
+}
+
+/* ================================================================== */
+/* Configure                                                            */
+/* ================================================================== */
+
+.configure h2 {
+  margin-bottom: 2rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+label:not(.radio-option) {
+  display: block;
+  margin-bottom: 1.5rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+select {
+  display: block;
+  width: 100%;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.75rem 2.5rem 0.75rem 0.85rem;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color var(--t);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b6b7a' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.radio-group {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  color: var(--text);
+  font-size: 0.95rem;
+  text-transform: none;
+  font-weight: 500;
+  transition: border-color var(--t), background var(--t), color var(--t);
+  letter-spacing: 0;
+}
+
+.radio-option input[type="radio"] {
+  display: none;
+}
+
+.radio-option:has(input:checked) {
+  background: var(--primary-dim);
+  border-color: var(--primary);
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* ================================================================== */
+/* Training / Session                                                   */
+/* ================================================================== */
+
+.session-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.session-header h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  flex: 1;
+}
+
+.duree {
+  color: var(--muted);
+  font-size: 0.85rem;
+  background: var(--surface);
+  padding: 0.3rem 0.75rem;
+  border-radius: 99px;
+  white-space: nowrap;
+  border: 1px solid var(--border);
+}
+
+.exercise-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.exercise-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  border: 1px solid transparent;
+  transition: background var(--t), border-color var(--t);
+}
+
+.exercise-card:hover {
+  background: var(--surface-2);
+  border-color: var(--border);
+}
+
+.exercise-number {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--primary);
+  min-width: 2rem;
+  text-align: center;
+  opacity: 0.7;
+  padding-top: 0.1rem;
+}
+
+.exercise-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.exercise-info-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.exercise-info-header h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  flex: 1;
+  min-width: 0;
+}
+
+.exercise-info p {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.exercise-meta strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.muscles {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-style: italic;
+}
+
+.repos {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.video-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--primary);
+  background: var(--primary-dim);
+  padding: 0.15rem 0.5rem;
+  border-radius: 99px;
+  text-decoration: none;
+  transition: opacity var(--t);
+  white-space: nowrap;
+}
+
+.video-link:hover {
+  opacity: 0.8;
+}
+
+.session-actions {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* ================================================================== */
+/* Exercises inspect                                                    */
+/* ================================================================== */
+
+.filter-label {
+  color: var(--muted);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.tab-group {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.exo-count {
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.exo-empty {
+  color: var(--muted);
+  text-align: center;
+  padding: 2.5rem 1rem;
+  font-size: 0.9rem;
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px dashed var(--border);
+}
+
+.tab {
+  background: var(--surface);
+  color: var(--muted);
+  border: 1px solid transparent;
+  border-radius: 99px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--t), color var(--t), border-color var(--t);
+}
+
+.tab:hover {
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+.tab-active {
+  background: var(--primary-dim);
+  color: var(--primary);
+  border-color: var(--primary);
+  font-weight: 700;
+}
+
+.exo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.exo-item {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 0.9rem 1.1rem;
+  border: 1px solid transparent;
+  transition: border-color var(--t), background var(--t);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.exo-item:hover {
+  border-color: var(--border);
+  background: var(--surface-2);
+}
+
+.exo-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.exo-item-header h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  flex: 1;
+  min-width: 0;
+}
+
+.exo-type {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 99px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
+}
+
+.type-force {
+  background: rgba(255, 90, 90, 0.12);
+  color: #ff7a7a;
+}
+
+.type-endurance {
+  background: rgba(80, 200, 140, 0.12);
+  color: #50c88c;
+}
+
+.type-tonification {
+  background: rgba(255, 185, 50, 0.12);
+  color: #e8a830;
+}
+
+.type-prise-de-muscle {
+  background: var(--primary-dim);
+  color: var(--primary);
+}
+
+.exo-muscle {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--primary);
+  align-self: flex-start;
+  transition: opacity var(--t);
+}
+
+.exo-muscle:hover {
+  opacity: 0.75;
+}
+
+.exo-muscles {
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* ================================================================== */
+/* Progress                                                             */
+/* ================================================================== */
+
+.progress-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 2.5rem 1rem 1.5rem;
+  text-align: center;
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px dashed var(--border);
+  margin-bottom: 1.5rem;
+}
+
+.progress-empty-icon {
+  font-size: 2.5rem;
+  filter: grayscale(0.4);
+  margin-bottom: 0.4rem;
+}
+
+.progress-empty-title {
+  color: var(--text);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.progress-empty-sub {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.progress-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.progress-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--border);
+  opacity: 0.75;
+}
+
+.progress-feature-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.progress-feature h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.progress-feature p {
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}

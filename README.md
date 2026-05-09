@@ -18,16 +18,18 @@ Entrez un groupe musculaire, une durée et un objectif — obtenez une séance c
 
 Sportacus génère des séances de sport adaptées à trois paramètres : le groupe musculaire ciblé, la durée disponible et l'objectif (endurance, force, prise de muscle, tonification). L'application calcule automatiquement le nombre de séries, de répétitions et les temps de repos en fonction de ces paramètres.
 
-### Fonctionnalités principales (Scope 1 — version livrée)
+### Fonctionnalités disponibles (Scope 1 — terminé)
 
-- Formulaire de saisie : groupe musculaire, durée, objectif
-- Génération d'une séance complète via un algorithme intégré
-- Affichage structuré : exercices dans l'ordre, séries × reps, temps de repos
-- Estimation de la durée totale de la séance
-- Bouton "Regénérer" pour obtenir une variante
-- Design responsive (mobile et desktop)
+- Formulaire de configuration : groupe musculaire (7 groupes, dont abdominaux et full body), durée (30 à 150 min), objectif (endurance / force / prise de muscle / tonification)
+- Génération de séance via algorithme intégré avec priorisation par type d'exercice
+- Affichage structuré : exercices ordonnés, séries × reps, temps de repos, durée estimée par exercice et durée totale
+- Lien vidéo tutoriel pour chaque exercice
+- Bouton "Régénérer" pour obtenir une variante aléatoire
+- Catalogue complet des exercices par groupe musculaire avec filtre par type
+- Page de suivi (placeholder) qui annonce les fonctionnalités du Scope 2
+- Design sombre responsive avec thème violet
 
-### Fonctionnalités prévues mais non implémentées
+### Fonctionnalités prévues
 
 Voir [ROADMAP.md](ROADMAP.md) pour le détail des Scopes 2 et 3 :
 - Chronomètre guidé pendant la séance (Scope 2)
@@ -71,61 +73,62 @@ bun run dev   # UI sur http://localhost:5173
 
 ## 4. Difficultés rencontrées
 
-> À compléter au fil du développement.
-
-- Conception de l'algorithme de génération : trouver un équilibre entre la durée cible, le nombre d'exercices et les temps de repos selon chaque objectif a demandé plusieurs itérations.
-- …
+- Bugs de typo silencieux en JSX (`math.floor` au lieu de `Math.floor`, `Maths.max` au lieu de `Math.max`) difficiles à traquer.
 
 ---
 
 ## 5. Usage de l'IA
 
-> À compléter honnêtement.
-
-- **Claude Code** a été utilisé pour générer la structure initiale du projet (ROADMAP.md, README.md) et proposer un plan de développement en 3 scopes.
-- Le code de l'application a été écrit manuellement / avec l'aide de … *(à préciser)*.
+- **Claude Code** a été utilisé pour la rédaction des fichiers `.md`, la détection et la correction de bugs, la complétion du CSS.
 
 ---
 
 ## 6. Ce qui fonctionne
 
-> À mettre à jour avant le rendu final.
-
-- [ ] Formulaire de saisie complet
-- [ ] Algorithme de génération de séance
-- [ ] Affichage de la séance générée
-- [ ] Design responsive
+- [x] Formulaire de saisie complet (groupe, durée, objectif)
+- [x] Algorithme de génération de séance (priorisation par type, fallback pool)
+- [x] Base d'exercices enrichie (7 groupes, ~76 exercices, champs muscles + vidéo)
+- [x] Affichage de la séance générée avec durée estimée réelle
+- [x] Liens vidéo tutoriel sur chaque exercice
+- [x] Bouton "Régénérer"
+- [x] Page catalogue des exercices par groupe musculaire
+- [x] Filtre du catalogue par type (force / endurance / tonification)
+- [x] Compteur d'exercices et état vide géré dans le catalogue
+- [x] Page "Suivi" (placeholder explicatif des fonctionnalités du Scope 2)
+- [x] Navigation complète entre toutes les pages
+- [x] Design responsive — dark theme avec transitions
 
 ---
 
-## 7. Ce qui manque
+## 7. Ce qui manque (Scope 2 et au-delà)
 
-> À mettre à jour avant le rendu final.
-
-- Chronomètre intégré (prévu Scope 2)
-- Sauvegarde et historique des séances (prévu Scope 2)
-- Adaptation par IA (prévu Scope 3)
-- …
+- [ ] Chronomètre intégré pendant la séance
+- [ ] Persistance des séances (backend requis)
+- [ ] Historique et progression par exercice
+- [ ] IA d'adaptation (Scope 3)
 
 ---
 
 ## Structure du projet
 
 ```
-.
-├── README.md
-├── ROADMAP.md
-├── frontend/           # Application SolidJS + Vite
-│   ├── src/
-│   │   ├── App.jsx
-│   │   ├── components/
-│   │   ├── data/       # Base d'exercices (JSON)
-│   │   └── utils/      # Algorithme de génération
-│   ├── index.html
-│   └── package.json
-└── backend/            # API Bun + Hono (Scope 2+)
-    ├── src/
-    │   └── index.js
-    ├── data/           # Stockage JSON des sessions
-    └── package.json
+frontend/
+└── src/
+    ├── index.jsx              → point d'entrée, monte le DOM
+    ├── App.jsx                → routeur (5 routes)
+    ├── store/
+    │   └── session.js         → signals partagés (config + séance courante)
+    ├── data/
+    │   ├── exo.json           → base d'exercices (7 groupes, ~70 exos)
+    │   └── algo.js            → generateTraining() — logique pure
+    ├── pages/
+    │   ├── home.jsx           → page d'accueil
+    │   ├── configure.jsx      → formulaire → génère la séance → store
+    │   ├── training.jsx       → affiche la séance, propose de régénérer
+    │   ├── exercises.jsx      → catalogue complet par groupe musculaire
+    │   └── progress.jsx       → placeholder (Scope 2)
+    ├── components/
+    │   └── exocard.jsx        → carte d'un exercice (props only)
+    └── styles/
+        └── global.css         → tout le CSS (dark theme, variables, transitions)
 ```

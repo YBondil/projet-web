@@ -21,30 +21,39 @@ statique    + Chrono    + Suivi avancé
 
 > Objectif : à partir de 3 paramètres, afficher une séance complète prête à suivre.
 
+**Statut : terminé**
+
 ### Stack
 
 - **SolidJS** + **Vite** (UI réactive)
-- **CSS** (mise en page, design)
+- **CSS** (dark theme, variables CSS, transitions)
 - Pas de backend — tout tourne dans le navigateur
 
 ### Fonctionnalités
 
-- [ ] Formulaire de saisie :
-  - Groupe musculaire (pectoraux, dos, jambes, épaules, bras, full body…)
-  - Durée d'entraînement (30 / 45 / 60 / 90 min)
+- [x] Formulaire de saisie :
+  - Groupe musculaire (pectoraux, dos, jambes, épaules, bras, abdominaux, full body)
+  - Durée d'entraînement (30 / 45 / 60 / 90 / 120 / 150 min)
   - Objectif (endurance, force, prise de muscle, tonification)
-- [ ] Base d'exercices statique intégrée (JSON embarqué dans l'appli)
-- [ ] Algorithme de génération de séance :
-  - Sélection des exercices adaptés au groupe musculaire
+- [x] Base d'exercices statique enrichie (~76 exercices, 7 groupes, champs `muscles[]` + `video`)
+- [x] Algorithme de génération de séance :
+  - Sélection par groupe musculaire primaire (`MUSCLE_ORDER`)
+  - Priorisation des exercices dont le type correspond à l'objectif (`OBJECTIF_TO_TYPE`)
+  - Fallback sur le pool complet si `MUSCLE_ORDER` ne remplit pas tous les slots
   - Calcul du nombre de séries et répétitions selon l'objectif
   - Calcul des temps de repos selon l'objectif
-  - Respect de la durée cible
-- [ ] Affichage de la séance générée :
-  - Liste des exercices dans l'ordre
-  - Pour chaque exercice : nom, séries × répétitions, temps de repos
-  - Durée totale estimée
-- [ ] Bouton "Regénérer" pour obtenir une variante
-- [ ] Design responsive (mobile + desktop)
+  - Respect de la durée cible (minimum 3 exercices garanti)
+- [x] Affichage de la séance générée :
+  - Liste ordonnée des exercices
+  - Pour chaque exercice : nom, muscles ciblés, séries × répétitions, temps de repos, temps complet de l'exercice
+  - Lien vidéo tutoriel par exercice
+  - Durée réellement estimée (calculée, pas juste la durée choisie)
+- [x] Bouton "Régénérer" pour obtenir une variante aléatoire
+- [x] Page catalogue : tous les exercices par groupe musculaire avec badges de type
+- [x] Filtrage du catalogue par type d'exercice (force / endurance / tonification)
+- [x] Page "Suivi" : placeholder explicatif des fonctionnalités à venir
+- [x] Navigation complète entre toutes les pages
+- [x] Design responsive (mobile + desktop) — dark theme violet
 
 ### Ce que le Scope 1 ne fait pas
 
@@ -52,6 +61,7 @@ statique    + Chrono    + Suivi avancé
 - Pas de sauvegarde des séances
 - Pas de suivi de progression
 - Pas de personnalisation IA
+- Pas de personalisation des exerices
 
 ### Lancement
 
@@ -66,6 +76,8 @@ bun run dev
 ## Scope 2 — Chronomètre + Historique (Frontend + Backend)
 
 > Objectif : guider l'utilisateur pendant la séance et garder une trace de ses performances.
+
+**Statut : non commencé**
 
 ### Stack ajoutée
 
@@ -97,7 +109,7 @@ bun run dev
 
 #### Historique et progression
 
-- [ ] Page historique : liste des séances passées
+- [ ] Page historique : liste des séances passées (remplace le placeholder actuel)
 - [ ] Fiche par exercice : évolution du poids et des reps au fil du temps
 - [ ] Records personnels (PR) mis en évidence
 
@@ -120,6 +132,8 @@ bun run dev
 ## Scope 3 — IA + Personnalisation avancée
 
 > Objectif : adapter automatiquement les séances à la progression et aux besoins réels de l'utilisateur.
+
+**Statut : non commencé**
 
 ### Stack ajoutée
 
@@ -179,34 +193,35 @@ bun run dev
 |---------------------------------------|:-------:|:-------:|:-------:|
 | Formulaire groupe / durée / objectif  | ✅      | ✅      | ✅      |
 | Génération de séance (algorithme)     | ✅      | ✅      | ✅      |
-| Affichage exercices + repos           | ✅      | ✅      | ✅      |
-| Design responsive                     | ✅      | ✅      | ✅      |
-| Chronomètre intégré                   | ❌       | ✅      | ✅      |
-| Saisie des performances               | ❌       | ✅      | ✅      |
-| Historique des séances                | ❌       | ✅      | ✅      |
-| Suivi poids / reps / PR               | ❌       | ✅      | ✅      |
-| Backend API                           | ❌       | ✅      | ✅      |
-| IA d'adaptation                       | ❌       | ❌       | ✅      |
-| Chat avec l'IA                        | ❌       | ❌       | ✅      |
-| Graphiques de progression             | ❌       | ❌       | ✅      |
-| Profil utilisateur avancé             | ❌       | ❌       | ✅      |
+| Affichage exercices + repos + vidéos  | ✅      | ✅      | ✅      |
+| Catalogue des exercices               | ✅      | ✅      | ✅      |
+| Design responsive dark theme          | ✅      | ✅      | ✅      |
+| Chronomètre intégré                   | ❌      | ✅      | ✅      |
+| Saisie des performances               | ❌      | ✅      | ✅      |
+| Historique des séances                | ❌      | ✅      | ✅      |
+| Suivi poids / reps / PR               | ❌      | ✅      | ✅      |
+| Backend API                           | ❌      | ✅      | ✅      |
+| IA d'adaptation                       | ❌      | ❌      | ✅      |
+| Chat avec l'IA                        | ❌      | ❌      | ✅      |
+| Graphiques de progression             | ❌      | ❌      | ✅      |
+| Profil utilisateur avancé             | ❌      | ❌      | ✅      |
 
 ---
 
 ## Conventions de développement
 
 - Code en **JavaScript** (pas TypeScript pour rester dans le périmètre du cours)
-- Nommage en **camelCase** pour les variables, **kebab-case** pour les fichiers
-- Pas de `node_modules` dans l'archive de rendu (`git archive` ou `.gitignore`)
+- Nommage en **camelCase** pour les variables, **kebab-case** pour les fichiers CSS et noms de composants en **PascalCase**
+- Pas de `node_modules` dans l'archive de rendu (`.gitignore`)
 - Un seul `README.md` à la racine du projet
 
 ---
 
-## Ordre de développement suggéré (Scope 1)
+## Ordre de développement — Scope 2
 
-1. Mettre en place le projet Vite + SolidJS
-2. Créer la base de données d'exercices (JSON)
-3. Coder l'algorithme de génération
-4. Construire le formulaire
-5. Afficher le résultat
-6. Soigner le CSS
+1. Mettre en place le backend (Bun + Hono, route de santé)
+2. Implémenter `POST /api/sessions` et `GET /api/sessions`
+3. Brancher le frontend sur l'API (fetch après "Fin de séance")
+4. Construire le chronomètre (timer par série + repos)
+5. Construire la page historique (remplace le placeholder)
+6. Ajouter la fiche de progression par exercice
