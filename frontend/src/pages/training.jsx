@@ -90,10 +90,9 @@ export default function Training() {
             const inEquipment = normalize(exo.equipment).includes(q);
             const inMuscles = exo.muscles.some((m) => normalize(m).includes(q));
             if (!inName && !inType && !inEquipment && !inMuscles) continue;
-          } catch {
-            (e) => {
-              console.log(e);
-            };
+          } catch (e) {
+            console.log(e);
+            continue;
           }
         }
         out.push({ ...exo, _group: group });
