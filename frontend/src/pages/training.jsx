@@ -238,6 +238,12 @@ export default function Training() {
         </Show>
 
         <div class="session-actions">
+          <button
+            class="btn-primary"
+            onClick={() => navigate("/training/ongoing")}
+          >
+            ▶ Démarrer la séance
+          </button>
           <Show
             when={!showSave()}
             fallback={
