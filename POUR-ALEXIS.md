@@ -1,4 +1,4 @@
-# Pour Alexis — onboarding Sportacus
+# Pour Alexis — onboarding SOMA
 
 Salut ma belle, un ptit résumé de ce qui à ete fait et de ce que tu peux faire coté backend
 
@@ -22,7 +22,7 @@ Ouvre [http://localhost:5173](http://localhost:5173).
 
 ## 2. Survol du projet
 
-**Sportacus = générateur de séances de sport.** L'utilisateur choisit un groupe musculaire, une durée, un objectif et son équipement, et l'app crache une séance complète (exercices, séries, reps, repos, vidéos).
+**SOMA = générateur de séances de sport.** L'utilisateur choisit un groupe musculaire, une durée, un objectif et son équipement, et l'app crache une séance complète (exercices, séries, reps, repos, vidéos).
 
 **Stack actuelle :**
 - **SolidJS** (signals réactifs, syntaxe proche de React mais sans Virtual DOM)

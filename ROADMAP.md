@@ -1,4 +1,4 @@
-# ROADMAP — Sportacus
+# ROADMAP — SOMA
 
 Générateur de séances de sport personnalisées.
 
@@ -91,7 +91,7 @@ bun run dev
 ### Stack ajoutée
 
 - **Bun** + **Hono** (API backend) — en place
-- Stockage **SQLite** côté serveur (`backend/data/sportacus.db`) via `bun:sqlite` — en place, tables `sessions` (colonnes filtrables + payload JSON) et `exercises` (exercices personnalisés)
+- Stockage **SQLite** côté serveur (`backend/data/soma.db`) via `bun:sqlite` — en place, tables `sessions` (colonnes filtrables + payload JSON) et `exercises` (exercices personnalisés)
 - Réutilisation des fichiers vides déjà préparés : `pages/pastTraining.jsx`, `components/progressbar.jsx`
 
 ### Nouvelles fonctionnalités
@@ -245,7 +245,7 @@ bun run dev
 ## Ordre de développement — Scope 2
 
 1. ✅ Mettre en place le backend (Bun + Hono, route `GET /api/health`)
-2. ✅ Implémenter `POST /api/sessions`, `GET /api/sessions`, `GET /api/sessions/:id`, `DELETE /api/sessions/:id` (stockage SQLite `backend/data/sportacus.db` via `bun:sqlite`)
+2. ✅ Implémenter `POST /api/sessions`, `GET /api/sessions`, `GET /api/sessions/:id`, `DELETE /api/sessions/:id` (stockage SQLite `backend/data/soma.db` via `bun:sqlite`)
 3. ✅ Adapter `store/savedSessions.js` pour fetch l'API au lieu de lire le localStorage (avec fallback local si l'API ne répond pas) — wrapper `api/sessions.js`, mises à jour optimistes, signal `apiStatus`, badge UI
 4. ✅ Construire le chronomètre (timer par série + repos) — `pages/training-ongoing.jsx`, branché depuis `training.jsx`
 5. ⏳ Implémenter `components/progressbar.jsx` pour afficher la progression dans la séance

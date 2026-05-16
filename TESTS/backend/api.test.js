@@ -30,7 +30,7 @@ describe("GET /api/health", () => {
     expect(res.status).toBe(200);
     const data = await res.json();
     expect(data.status).toBe("ok");
-    expect(data.service).toBe("sportacus-backend");
+    expect(data.service).toBe("soma-backend");
     expect(typeof data.version).toBe("string");
     expect(new Date(data.time).toString()).not.toBe("Invalid Date");
   });

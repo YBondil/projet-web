@@ -1,6 +1,6 @@
-# Sportacus — Backend
+# SOMA — Backend
 
-API HTTP du projet Sportacus, basée sur **Bun** + **Hono**.
+API HTTP du projet SOMA, basée sur **Bun** + **Hono**.
 
 ## Lancement
 
@@ -32,7 +32,7 @@ L'API écoute sur [http://localhost:3000](http://localhost:3000).
 
 ## Stockage
 
-Les séances sont persistées dans une base **SQLite** locale (`data/sportacus.db`), gérée via le module `bun:sqlite` natif (aucune dépendance externe, pas de serveur DB séparé à lancer).
+Les séances sont persistées dans une base **SQLite** locale (`data/soma.db`), gérée via le module `bun:sqlite` natif (aucune dépendance externe, pas de serveur DB séparé à lancer).
 
 Schéma de la table `sessions` :
 

@@ -1,4 +1,4 @@
-# Sportacus
+# SOMA
 
 Générateur de séances de sport personnalisées.
 Entrez un groupe musculaire, une durée, un objectif et l'équipement disponible — obtenez une séance complète avec exercices, séries, répétitions et temps de repos.
@@ -16,7 +16,7 @@ Entrez un groupe musculaire, une durée, un objectif et l'équipement disponible
 
 ### Idée générale
 
-Sportacus génère des séances de sport adaptées à quatre paramètres : le groupe musculaire ciblé, la durée disponible, l'objectif (endurance, force, prise de muscle, tonification) et l'équipement à disposition. L'application calcule automatiquement le nombre de séries, de répétitions et les temps de repos en fonction de ces paramètres.
+SOMA génère des séances de sport adaptées à quatre paramètres : le groupe musculaire ciblé, la durée disponible, l'objectif (endurance, force, prise de muscle, tonification) et l'équipement à disposition. L'application calcule automatiquement le nombre de séries, de répétitions et les temps de repos en fonction de ces paramètres.
 
 ### Fonctionnalités disponibles (Scope 1 — terminé)
 
@@ -39,7 +39,7 @@ Sportacus génère des séances de sport adaptées à quatre paramètres : le gr
 
 - Chronomètre guidé pendant la séance ([frontend/src/pages/training-ongoing.jsx](frontend/src/pages/training-ongoing.jsx))
 - Backend Bun + Hono en place : `GET /api/health`, `GET/POST /api/sessions`, `GET/DELETE /api/sessions/:id` — voir [backend/README.md](backend/README.md)
-- Stockage SQLite (`backend/data/sportacus.db`) via le module natif `bun:sqlite`, deux tables :
+- Stockage SQLite (`backend/data/soma.db`) via le module natif `bun:sqlite`, deux tables :
   - `sessions` (colonnes filtrables `musculaire` / `objectif` / `duree` / `created_at` + payload JSON pour le détail des exercices) ;
   - `exercises` (exercices personnalisés ; colonne `group_name` indexée pour le filtrage par groupe musculaire, `muscles_json` pour la liste des muscles ciblés).
 - Le frontend consomme l'API ([frontend/src/api/sessions.js](frontend/src/api/sessions.js), [frontend/src/store/savedSessions.js](frontend/src/store/savedSessions.js)) avec **fallback localStorage** si le backend ne répond pas (timeout 3 s via `AbortController`). Badge de statut « Synchronisé / Hors ligne » + bouton « Réessayer » sur la page « Mes séances »
@@ -192,7 +192,7 @@ frontend/
 backend/
 ├── package.json
 ├── README.md
-├── data/                         → sportacus.db SQLite (créée à la volée, gitignored)
+├── data/                         → soma.db SQLite (créée à la volée, gitignored)
 └── src/
     ├── server.js                 → Hono + CORS + routing
     ├── routes/

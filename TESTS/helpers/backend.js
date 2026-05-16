@@ -4,10 +4,10 @@ import { resolve } from "node:path";
 export const BACKEND_DIR = resolve(import.meta.dir, "..", "..", "backend");
 export const DB_DIR = resolve(BACKEND_DIR, "data");
 const DB_FILES = [
-  "sportacus.db",
-  "sportacus.db-wal",
-  "sportacus.db-shm",
-  "sportacus.db-journal",
+  "soma.db",
+  "soma.db-wal",
+  "soma.db-shm",
+  "soma.db-journal",
 ];
 const BAK_SUFFIX = ".test-backup";
 

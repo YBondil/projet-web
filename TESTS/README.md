@@ -1,4 +1,4 @@
-# TESTS — Sportacus
+# TESTS — SOMA
 
 Suite de tests exhaustive pour le frontend (logique pure) et le backend (storage + API HTTP).
 Tout passe par **`bun test`** (intégré à Bun, aucune dépendance supplémentaire à installer).
@@ -15,7 +15,7 @@ bun run test backend/api      # un fichier précis
 
 > `bun run test` passe par le wrapper [run-tests.js](run-tests.js) qui :
 > 1. restaure un éventuel backup résiduel d'un run précédent foiré,
-> 2. sauvegarde la DB de prod (`backend/data/sportacus.db*` → `*.test-backup`),
+> 2. sauvegarde la DB de prod (`backend/data/soma.db*` → `*.test-backup`),
 > 3. lance `bun test` (avec une DB vide créée à la volée),
 > 4. restaure la DB de prod **dans tous les cas** (même si les tests échouent).
 >
@@ -83,7 +83,7 @@ bun run test backend/api      # un fichier précis
 
 ## Isolation de la base de données
 
-Les tests backend utilisent la même instance SQLite que le serveur (`backend/data/sportacus.db`), mais :
+Les tests backend utilisent la même instance SQLite que le serveur (`backend/data/soma.db`), mais :
 
 1. Le wrapper [run-tests.js](run-tests.js) sauvegarde la DB de prod **avant** de lancer `bun test` (renommée en `*.test-backup`).
 2. `bun test` démarre avec une DB vide. Les modules `db.js` / `storage/sessions.js` sont chargés via `import()` dans les `beforeAll` des fichiers de test.

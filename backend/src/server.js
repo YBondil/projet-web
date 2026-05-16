@@ -30,7 +30,7 @@ app.onError((err, c) => {
   return c.json({ error: "internal_error", message: err.message }, 500);
 });
 
-console.log(`[server] Sportacus API listening on http://localhost:${PORT}`);
+console.log(`[server] SOMA API listening on http://localhost:${PORT}`);
 
 export default {
   port: PORT,

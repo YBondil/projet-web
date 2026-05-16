@@ -2,7 +2,7 @@ import { Database } from "bun:sqlite";
 import { existsSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 
-const DB_FILE = resolve(import.meta.dir, "..", "..", "data", "sportacus.db");
+const DB_FILE = resolve(import.meta.dir, "..", "..", "data", "soma.db");
 
 const dir = dirname(DB_FILE);
 if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
