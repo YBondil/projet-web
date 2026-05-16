@@ -1131,3 +1131,227 @@ select:focus {
   font-size: 0.82rem;
   line-height: 1.4;
 }
+
+/* ================================================================== */
+/* Training ongoing (chronomètre)                                       */
+/* ================================================================== */
+
+.ongoing-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.ongoing-progress {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-left: auto;
+}
+
+.ongoing-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.ongoing-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.ongoing-card h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.ongoing-ring-wrap {
+  position: relative;
+  width: min(320px, 80vw);
+  aspect-ratio: 1;
+  margin: 0.5rem auto 1.5rem;
+}
+
+.ongoing-ring {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.ongoing-ring-bg {
+  fill: none;
+  stroke: var(--surface-2);
+  stroke-width: 10;
+}
+
+.ongoing-ring-fg {
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 10;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.95s linear, stroke var(--t);
+  filter: drop-shadow(0 0 12px rgba(108, 99, 255, 0.35));
+}
+
+.ongoing-ring-active .ongoing-ring-fg {
+  stroke: var(--primary);
+}
+
+.ongoing-ring-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  text-align: center;
+  padding: 0 1.5rem;
+}
+
+.ongoing-ring-label {
+  color: var(--muted);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+}
+
+.ongoing-ring-time {
+  font-variant-numeric: tabular-nums;
+  font-size: 3.6rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  background: linear-gradient(135deg, #ffffff 35%, var(--primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ongoing-ring-sub {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.ongoing-ring-sub strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.ongoing-action {
+  font-size: 1.05rem;
+  padding: 1.1rem 2rem;
+}
+
+.ongoing-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.ongoing-nav .btn-secondary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.ongoing-finish {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.ongoing-finish-icon {
+  font-size: 3rem;
+  margin-bottom: 0.4rem;
+}
+
+.ongoing-finish h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.ongoing-finish-time {
+  font-variant-numeric: tabular-nums;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: 0.04em;
+}
+
+.ongoing-finish-sub {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.2rem;
+}
+
+.ongoing-finish .btn-primary {
+  max-width: 320px;
+}
+
+.ongoing-feedback {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.ongoing-feedback h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.ongoing-feedback-sub {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: -0.5rem;
+}
+
+.difficulte-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.4rem;
+}
+
+.difficulte-option {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.6rem 0.8rem;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: background var(--t), border-color var(--t), color var(--t);
+}
+
+.difficulte-option:hover {
+  border-color: var(--muted);
+}
+
+.difficulte-active {
+  background: var(--primary-dim);
+  border-color: var(--primary);
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.ongoing-feedback-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}

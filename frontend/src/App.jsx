@@ -5,6 +5,7 @@ import Training from "./pages/training.jsx";
 import Progress from "./pages/progress.jsx";
 import ExercisesInspect from "./pages/exercises.jsx";
 import SavedSessions from "./pages/saved.jsx";
+import TrainingOnGoing from "./pages/training-ongoing.jsx";
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
       <Route path="/progress" component={Progress} />
       <Route path="/exercises" component={ExercisesInspect} />
       <Route path="/saved" component={SavedSessions} />
+      <Route path="/training/ongoing" component={TrainingOnGoing} />
     </Router>
   );
 }

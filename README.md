@@ -89,6 +89,7 @@ bun run dev   # UI sur http://localhost:5173
 ## 5. Usage de l'IA
 
 - **Claude Code** a été utilisé pour la rédaction des fichiers `.md`, la détection et la correction de bugs, la complétion du CSS et l'enrichissement de la base d'exercices.
+- **Claude Code** a également été utilisé pour la gestion des barre de recherche.
 
 ---
 

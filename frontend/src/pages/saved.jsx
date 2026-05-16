@@ -35,7 +35,7 @@ export default function SavedSessions() {
       objectif: entry.session.objectif,
     });
     setCurrentSession(entry.session);
-    navigate("/training");
+    navigate("/training/ongoing");
   };
 
   return (
@@ -71,7 +71,8 @@ export default function SavedSessions() {
                 </div>
                 <p class="saved-item-meta">
                   <span class="exo-group-badge">
-                    {LABEL[entry.session.musculaire] ?? entry.session.musculaire}
+                    {LABEL[entry.session.musculaire] ??
+                      entry.session.musculaire}
                   </span>
                   <span>{entry.session.objectif}</span>
                   <span>·</span>
@@ -80,10 +81,7 @@ export default function SavedSessions() {
                   <span>~{entry.session.dureeEstimee} min</span>
                 </p>
                 <div class="saved-item-actions">
-                  <button
-                    class="btn-primary"
-                    onClick={() => launch(entry)}
-                  >
+                  <button class="btn-primary" onClick={() => launch(entry)}>
                     Lancer
                   </button>
                   <button
