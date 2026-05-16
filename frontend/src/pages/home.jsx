@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <main class="home">
       <div class="home-hero">
-        <h1>Sportacus</h1>
+        <h1>SOMA</h1>
         <p class="home-tagline">Ta séance en 30 secondes.</p>
       </div>
 

@@ -6,6 +6,23 @@ import {
   refreshCompletedSessions,
   deleteCompletedSession,
 } from "../store/completedSessions.js";
+import { allExercises } from "../store/exercises.js";
+import {
+  aggregateByExercise,
+  recordsFor,
+  groupStats,
+} from "../data/progressAggregates.js";
+
+const LABEL = {
+  pectoraux: "Pectoraux",
+  dos: "Dos",
+  jambes: "Jambes",
+  épaules: "Épaules",
+  bras: "Bras",
+  abdominaux: "Abdominaux",
+  "full body": "Full Body",
+  autre: "Autres",
+};
 
 function formatDate(iso) {
   try {
@@ -28,130 +45,16 @@ function formatDuration(seconds) {
   return `${m}min ${s.toString().padStart(2, "0")}`;
 }
 
-function parseCharge(v) {
-  const n = parseFloat(v);
-  return Number.isFinite(n) ? n : null;
-}
-
-function parseReps(v) {
-  const n = parseInt(v, 10);
-  return Number.isFinite(n) ? n : null;
-}
-
-function aggregateByExercise(allCompleted) {
-  const byExo = {};
-  for (const entry of allCompleted) {
-    const session = entry.session;
-    if (!session?.exercises) continue;
-    for (const exo of session.exercises) {
-      const fb = entry.feedbacks?.[exo.id];
-      if (!fb) continue;
-      const charge = parseCharge(fb.charge);
-      const reps = parseReps(fb.reps);
-      if (charge === null && reps === null) continue;
-
-      if (!byExo[exo.id]) {
-        byExo[exo.id] = {
-          id: exo.id,
-          name: exo.name,
-          muscles: exo.muscles ?? [],
-          points: [],
-        };
-      }
-      byExo[exo.id].points.push({
-        date: entry.finishedAt,
-        sessionId: entry.id,
-        charge,
-        reps,
-        difficulte: fb.difficulte ?? null,
-      });
-    }
-  }
-  for (const e of Object.values(byExo)) {
-    e.points.sort((a, b) => new Date(a.date) - new Date(b.date));
-  }
-  return Object.values(byExo);
-}
-
-function recordsFor(aggregates) {
-  const out = [];
-  for (const agg of aggregates) {
-    let best = null;
-    for (const p of agg.points) {
-      if (p.charge === null) continue;
-      if (best === null || p.charge > best.charge) best = p;
-    }
-    if (best === null) continue;
-    out.push({
-      id: agg.id,
-      name: agg.name,
-      charge: best.charge,
-      reps: best.reps,
-      date: best.date,
-    });
-  }
-  return out.sort((a, b) => b.charge - a.charge);
-}
-
-function MiniChart(props) {
-  const W = 220;
-  const H = 56;
-  const PAD = 4;
-  const values = () =>
-    props.points.map((p) => p[props.metric]).filter((v) => v !== null);
-  const polyline = () => {
-    const vs = values();
-    if (vs.length < 2) return "";
-    const min = Math.min(...vs);
-    const max = Math.max(...vs);
-    const range = max - min || 1;
-    const stepX = (W - 2 * PAD) / (vs.length - 1);
-    return vs
-      .map((v, i) => {
-        const x = PAD + i * stepX;
-        const y = PAD + (H - 2 * PAD) * (1 - (v - min) / range);
-        return `${x.toFixed(1)},${y.toFixed(1)}`;
-      })
-      .join(" ");
-  };
-  const dots = () => {
-    const vs = values();
-    if (vs.length < 2) return [];
-    const min = Math.min(...vs);
-    const max = Math.max(...vs);
-    const range = max - min || 1;
-    const stepX = (W - 2 * PAD) / (vs.length - 1);
-    return vs.map((v, i) => ({
-      x: PAD + i * stepX,
-      y: PAD + (H - 2 * PAD) * (1 - (v - min) / range),
-    }));
-  };
-
-  return (
-    <Show when={values().length >= 2}>
-      <svg
-        class="progress-chart"
-        viewBox={`0 0 ${W} ${H}`}
-        preserveAspectRatio="none"
-        role="img"
-        aria-label="Évolution"
-      >
-        <polyline class="progress-chart-line" points={polyline()} />
-        <For each={dots()}>
-          {(d) => <circle class="progress-chart-dot" cx={d.x} cy={d.y} r="2.8" />}
-        </For>
-      </svg>
-    </Show>
-  );
-}
-
 export default function Progress() {
   const navigate = useNavigate();
 
-  const aggregates = createMemo(() => aggregateByExercise(completedSessions()));
+  const aggregates = createMemo(() =>
+    aggregateByExercise(completedSessions(), allExercises())
+  );
   const records = createMemo(() => recordsFor(aggregates()));
-  const evolutions = createMemo(() =>
-    aggregates().filter((a) => a.points.length >= 2)
+  const groups = createMemo(() => groupStats(aggregates(), completedSessions()));
+  const sortedGroups = createMemo(() =>
+    Object.values(groups()).sort((a, b) => b.sessionCount - a.sessionCount)
   );
 
   const totalSessions = () => completedSessions().length;
@@ -257,66 +160,76 @@ export default function Progress() {
         </section>
 
         <Show when={records().length > 0}>
-          <section class="progress-section">
-            <h3 class="progress-section-title">🏆 Records personnels</h3>
-            <ul class="progress-records">
-              <For each={records()}>
-                {(r) => (
-                  <li class="progress-record">
-                    <span class="progress-record-name">{r.name}</span>
-                    <span class="progress-record-meta">
-                      <strong>{r.charge} kg</strong>
-                      <Show when={r.reps !== null}>
-                        {" "}
-                        × {r.reps} reps
-                      </Show>
-                      <span class="progress-record-date">
-                        {formatDate(r.date)}
-                      </span>
-                    </span>
-                  </li>
-                )}
-              </For>
-            </ul>
-          </section>
-        </Show>
-
-        <Show when={evolutions().length > 0}>
-          <section class="progress-section">
-            <h3 class="progress-section-title">📈 Évolution par exercice</h3>
-            <ul class="progress-evolutions">
-              <For each={evolutions()}>
-                {(agg) => (
-                  <li class="progress-evolution">
-                    <div class="progress-evolution-head">
-                      <span class="progress-evolution-name">{agg.name}</span>
-                      <span class="progress-evolution-count">
-                        {agg.points.length} séances
-                      </span>
-                    </div>
-                    <MiniChart points={agg.points} metric="charge" />
-                    <div class="progress-evolution-foot">
-                      <span>
-                        Début : <strong>{agg.points[0].charge ?? "—"} kg</strong>
-                      </span>
-                      <span>
-                        Dernier :{" "}
-                        <strong>
-                          {agg.points[agg.points.length - 1].charge ?? "—"} kg
-                        </strong>
-                      </span>
-                    </div>
-                  </li>
-                )}
-              </For>
-            </ul>
-          </section>
+          <button
+            class="progress-nav-card"
+            type="button"
+            onClick={() => navigate("/progress/records")}
+          >
+            <span class="progress-nav-icon">🏆</span>
+            <span class="progress-nav-body">
+              <span class="progress-nav-title">Records personnels</span>
+              <span class="progress-nav-desc">
+                {records().length} record{records().length > 1 ? "s" : ""} —
+                meilleure charge : {records()[0].charge} kg sur «{" "}
+                {records()[0].name} »
+              </span>
+            </span>
+            <span class="progress-nav-arrow" aria-hidden="true">
+              →
+            </span>
+          </button>
         </Show>
 
         <section class="progress-section">
-          <h3 class="progress-section-title">📅 Séances passées</h3>
+          <h3 class="progress-section-title">💪 Par groupe musculaire</h3>
+          <ul class="progress-groups">
+            <For each={sortedGroups()}>
+              {(g) => (
+                <li>
+                  <button
+                    class="progress-group-card"
+                    type="button"
+                    onClick={() =>
+                      navigate(`/progress/muscle/${encodeURIComponent(g.group)}`)
+                    }
+                    disabled={
+                      g.sessionCount === 0 && g.exercises.length === 0
+                    }
+                  >
+                    <span class="progress-group-name">
+                      {LABEL[g.group] ?? g.group}
+                    </span>
+                    <span class="progress-group-meta">
+                      <span>
+                        <strong>{g.sessionCount}</strong> séance
+                        {g.sessionCount > 1 ? "s" : ""}
+                      </span>
+                      <span>·</span>
+                      <span>
+                        <strong>{g.exercises.length}</strong> exo
+                        {g.exercises.length > 1 ? "s" : ""}
+                      </span>
+                      <Show when={g.topCharge > 0}>
+                        <span>·</span>
+                        <span>
+                          PR <strong>{g.topCharge} kg</strong>
+                        </span>
+                      </Show>
+                    </span>
+                    <span class="progress-group-arrow" aria-hidden="true">
+                      →
+                    </span>
+                  </button>
+                </li>
+              )}
+            </For>
+          </ul>
+        </section>
+
+        <section class="progress-section">
+          <h3 class="progress-section-title">📅 Séances récentes</h3>
           <ul class="completed-list">
-            <For each={completedSessions()}>
+            <For each={completedSessions().slice(0, 5)}>
               {(entry) => (
                 <li class="completed-item">
                   <div class="completed-item-head">
@@ -328,9 +241,7 @@ export default function Progress() {
                     </span>
                   </div>
                   <p class="completed-item-meta">
-                    <span>
-                      {entry.session?.exercises?.length ?? 0} exos
-                    </span>
+                    <span>{entry.session?.exercises?.length ?? 0} exos</span>
                     <span>·</span>
                     <span>{formatDuration(entry.durationSeconds)}</span>
                     <Show
@@ -360,6 +271,15 @@ export default function Progress() {
               )}
             </For>
           </ul>
+          <Show when={completedSessions().length > 5}>
+            <button
+              class="btn-secondary progress-see-all"
+              type="button"
+              onClick={() => navigate("/progress/sessions")}
+            >
+              Voir toutes les séances ({completedSessions().length})
+            </button>
+          </Show>
         </section>
       </Show>
     </main>

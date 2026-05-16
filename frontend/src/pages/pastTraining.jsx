@@ -1,9 +1,10 @@
-import { For, Show, createMemo } from "solid-js";
+import { For, Show, createMemo, createSignal } from "solid-js";
 import { useNavigate, useParams } from "@solidjs/router";
 import {
   completedSessions,
   deleteCompletedSession,
 } from "../store/completedSessions.js";
+import { saveSession } from "../store/savedSessions.js";
 import { EQUIPMENT_LABEL } from "../data/equipment.js";
 
 const DIFFICULTE_LABEL = {
@@ -41,6 +42,29 @@ export default function PastTraining() {
   const entry = createMemo(() =>
     completedSessions().find((e) => e.id === params.id)
   );
+
+  const [showSave, setShowSave] = createSignal(false);
+  const [saveName, setSaveName] = createSignal("");
+  const [saveDone, setSaveDone] = createSignal(false);
+
+  const defaultSaveName = () => {
+    const e = entry();
+    if (!e) return "";
+    return `${e.musculaire ?? "séance"} - ${e.objectif ?? "?"} (${formatDate(
+      e.finishedAt
+    )})`;
+  };
+
+  const handleSave = (event) => {
+    event?.preventDefault?.();
+    const e = entry();
+    if (!e?.session) return;
+    saveSession(e.session, saveName() || defaultSaveName());
+    setShowSave(false);
+    setSaveName("");
+    setSaveDone(true);
+    setTimeout(() => setSaveDone(false), 2400);
+  };
 
   const handleDelete = () => {
     const e = entry();
@@ -153,7 +177,47 @@ export default function PastTraining() {
           </For>
         </ul>
 
-        <div class="past-training-actions">
+        <div class="past-training-actions past-training-actions-stack">
+          <Show
+            when={!showSave()}
+            fallback={
+              <form class="save-form" onSubmit={handleSave}>
+                <input
+                  class="form-input"
+                  placeholder={defaultSaveName()}
+                  value={saveName()}
+                  onInput={(e) => setSaveName(e.target.value)}
+                  autofocus
+                />
+                <div class="save-form-actions">
+                  <button class="btn-primary" type="submit">
+                    Enregistrer
+                  </button>
+                  <button
+                    class="btn-secondary"
+                    type="button"
+                    onClick={() => {
+                      setShowSave(false);
+                      setSaveName("");
+                    }}
+                  >
+                    Annuler
+                  </button>
+                </div>
+              </form>
+            }
+          >
+            <button
+              class="btn-primary"
+              type="button"
+              onClick={() => setShowSave(true)}
+            >
+              {saveDone()
+                ? "✓ Ajoutée à Mes séances"
+                : "💾 Enregistrer dans Mes séances"}
+            </button>
+          </Show>
+
           <button class="btn-secondary saved-delete" onClick={handleDelete}>
             Supprimer cette séance
           </button>
