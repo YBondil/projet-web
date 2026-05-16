@@ -54,6 +54,7 @@ statique    + Chrono    + Suivi avancé
 - [x] Édition de la séance en temps réel :
   - Retirer un exercice
   - Ajouter un exercice via picker recherchable (par nom, type, équipement, muscle)
+  - Réordonner les exercices par drag-and-drop (HTML5 natif, indicateurs `drop-above` / `drop-below`)
 - [x] Bouton « Régénérer » pour obtenir une variante aléatoire
 - [x] Sauvegarde locale des séances (localStorage) avec nom personnalisable, listées dans « Mes séances », relançables ou supprimables
 - [x] Page catalogue : tous les exercices par groupe musculaire avec badges de type
@@ -61,7 +62,7 @@ statique    + Chrono    + Suivi avancé
 - [x] Création d'exercices personnalisés (formulaire avec chips de muscles + autocomplétion), persistés en localStorage et fusionnés à la base intégrée
 - [x] Page « Suivi » : placeholder explicatif des fonctionnalités à venir
 - [x] Navigation complète entre toutes les pages
-- [x] Design responsive (mobile + desktop) — dark theme violet
+- [x] Design responsive (mobile + desktop) — thème clair, angulaire (bordures `2px`, ombres flat, fond crème + primary teal + accent ambré)
 
 ### Ce que le Scope 1 ne fait pas
 
@@ -85,40 +86,47 @@ bun run dev
 
 > Objectif : guider l'utilisateur pendant la séance et garder une trace de ses performances réelles, partagée entre appareils.
 
-**Statut : non commencé**
+**Statut : en cours**
 
 ### Stack ajoutée
 
-- **Bun** + **Hono** (API backend)
-- Stockage JSON côté serveur (fichier `data/sessions.json`) — possibilité de migrer vers SQLite plus tard
+- **Bun** + **Hono** (API backend) — en place
+- Stockage **SQLite** côté serveur (`backend/data/sportacus.db`) via `bun:sqlite` — en place, tables `sessions` (colonnes filtrables + payload JSON) et `exercises` (exercices personnalisés)
 - Réutilisation des fichiers vides déjà préparés : `pages/pastTraining.jsx`, `components/progressbar.jsx`
 
 ### Nouvelles fonctionnalités
 
 #### Chronomètre intégré
 
-- [ ] Mode « Séance en cours » :
-  - Affichage de l'exercice actuel avec les consignes
-  - Décompte du temps d'exercice (si durée fixe) ou minuteur libre
-  - Décompte du temps de repos entre les séries
-  - Alerte visuelle et sonore à la fin de chaque phase
-  - Bouton « Passer » pour sauter un exercice ou une série
-  - Progression dans la séance (exercice 2/6, série 3/4…) — composant `ProgressBar` à implémenter
+- [x] Mode « Séance en cours » (`pages/training-ongoing.jsx`) :
+  - [x] Affichage de l'exercice actuel avec les consignes
+  - [x] Anneau de décompte du temps de repos entre les séries
+  - [x] Boutons « Précédent » / « Suivant » pour naviguer dans la séance
+  - [x] Saisie de feedback (charge, reps, difficulté) en fin d'exercice
+  - [ ] Alerte sonore à la fin de chaque phase de repos
+  - [ ] Progression dans la séance via composant `ProgressBar` dédié (la pos. `n/total` est déjà affichée en texte)
 
 #### Enregistrement des performances
 
 - [ ] En fin de séance, saisie des données réelles :
-  - Poids utilisé par exercice
-  - Nombre de répétitions réellement effectuées
-  - Ressenti (trop facile / bien / trop difficile)
-- [ ] API backend :
-  - `GET /api/health` — sanity check
-  - `POST /api/sessions` — sauvegarder une séance terminée
-  - `GET /api/sessions` — récupérer l'historique
-  - `GET /api/sessions/:id` — détail d'une séance
-  - `DELETE /api/sessions/:id` — supprimer une séance
-- [ ] Migration des séances actuellement en localStorage (« Mes séances ») vers le backend
-  - Garder un mode dégradé localStorage si le backend est down
+  - [x] Poids utilisé par exercice (formulaire en fin d'exercice)
+  - [x] Nombre de répétitions réellement effectuées
+  - [x] Ressenti (facile / moyen / difficile / très difficile)
+  - [ ] Persister ces feedbacks côté serveur (aujourd'hui en mémoire)
+- API backend :
+  - [x] `GET /api/health` — sanity check (status + version + timestamp)
+  - [x] `POST /api/sessions` — sauvegarder une séance terminée
+  - [x] `GET /api/sessions` — récupérer l'historique
+  - [x] `GET /api/sessions/:id` — détail d'une séance
+  - [x] `DELETE /api/sessions/:id` — supprimer une séance
+- [x] Migration des séances actuellement en localStorage (« Mes séances ») vers le backend
+  - [x] `store/savedSessions.js` consomme l'API (`api/sessions.js` — wrapper `fetch` avec `AbortController`, timeout 3 s)
+  - [x] Mode dégradé localStorage si le backend est down (mises à jour optimistes, cache local, signal `apiStatus`)
+  - [x] Badge de statut « Synchronisé / Hors ligne » + bouton « Réessayer » sur la page « Mes séances »
+- [x] Migration des exercices personnalisés vers le backend
+  - [x] Table SQLite `exercises` + endpoints `GET / POST / GET /:id / DELETE` sous `/api/exercises`
+  - [x] `store/exercises.js` consomme l'API (`api/exercises.js`) avec fallback localStorage et mises à jour optimistes
+  - [x] Signal `exercisesApiStatus` exporté pour les futurs indicateurs UI
 
 #### Historique et progression
 
@@ -185,10 +193,7 @@ bun run dev
 ### Lancement
 
 ```bash
-# Ajouter la clé API dans le fichier .env du backend
-echo "ANTHROPIC_API_KEY=sk-..." > backend/.env
-
-# Terminal 1 — backend
+# Terminal 1 — backend (la clé API Anthropic sera fournie au lancement, projet local uniquement)
 cd backend
 bun install
 bun run dev
@@ -239,11 +244,11 @@ bun run dev
 
 ## Ordre de développement — Scope 2
 
-1. Mettre en place le backend (Bun + Hono, route `GET /api/health`)
-2. Implémenter `POST /api/sessions` et `GET /api/sessions` (stockage JSON simple pour démarrer)
-3. Adapter `store/savedSessions.js` pour fetch l'API au lieu de lire le localStorage (avec fallback local si l'API ne répond pas)
-4. Construire le chronomètre (timer par série + repos) — composant dédié, à brancher dans `training.jsx`
-5. Implémenter `components/progressbar.jsx` pour afficher la progression dans la séance
-6. Ajouter l'écran de saisie des performances en fin de séance
-7. Construire `pages/pastTraining.jsx` : détail d'une séance passée avec performances saisies
-8. Remplacer le placeholder `pages/progress.jsx` par la vraie page de suivi (liste + évolution par exercice + PR)
+1. ✅ Mettre en place le backend (Bun + Hono, route `GET /api/health`)
+2. ✅ Implémenter `POST /api/sessions`, `GET /api/sessions`, `GET /api/sessions/:id`, `DELETE /api/sessions/:id` (stockage SQLite `backend/data/sportacus.db` via `bun:sqlite`)
+3. ✅ Adapter `store/savedSessions.js` pour fetch l'API au lieu de lire le localStorage (avec fallback local si l'API ne répond pas) — wrapper `api/sessions.js`, mises à jour optimistes, signal `apiStatus`, badge UI
+4. ✅ Construire le chronomètre (timer par série + repos) — `pages/training-ongoing.jsx`, branché depuis `training.jsx`
+5. ⏳ Implémenter `components/progressbar.jsx` pour afficher la progression dans la séance
+6. ✅ Ajouter l'écran de saisie des performances en fin de séance (en mémoire — reste à persister via l'API)
+7. ⏳ Construire `pages/pastTraining.jsx` : détail d'une séance passée avec performances saisies
+8. ⏳ Remplacer le placeholder `pages/progress.jsx` par la vraie page de suivi (liste + évolution par exercice + PR)

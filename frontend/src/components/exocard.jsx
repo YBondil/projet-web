@@ -1,9 +1,43 @@
 import { Show } from "solid-js";
 import { EQUIPMENT_LABEL } from "../data/equipment.js";
 
-export default function ExerciseCard({ exercise, index, onRemove }) {
+export default function ExerciseCard({
+  exercise,
+  index,
+  onRemove,
+  dragHandlers,
+  dragState,
+}) {
+  const draggable = Boolean(dragHandlers);
+
+  const className = () => {
+    const parts = ["exercise-card"];
+    if (draggable) parts.push("is-draggable");
+    if (dragState?.isDragging) parts.push("is-dragging");
+    if (dragState?.dropAbove) parts.push("drop-above");
+    if (dragState?.dropBelow) parts.push("drop-below");
+    return parts.join(" ");
+  };
+
   return (
-    <li class="exercise-card">
+    <li
+      class={className()}
+      draggable={draggable}
+      onDragStart={dragHandlers?.onDragStart}
+      onDragOver={dragHandlers?.onDragOver}
+      onDragLeave={dragHandlers?.onDragLeave}
+      onDrop={dragHandlers?.onDrop}
+      onDragEnd={dragHandlers?.onDragEnd}
+    >
+      <Show when={draggable}>
+        <span
+          class="exercise-grip"
+          aria-label="Glisser pour réordonner"
+          title="Glisser pour réordonner"
+        >
+          ⋮⋮
+        </span>
+      </Show>
       <span class="exercise-number">{index}</span>
       <div class="exercise-info">
         <div class="exercise-info-header">
@@ -14,6 +48,7 @@ export default function ExerciseCard({ exercise, index, onRemove }) {
               target="_blank"
               rel="noopener noreferrer"
               class="video-link"
+              draggable={false}
             >
               ▶ Tuto
             </a>

@@ -5,13 +5,13 @@
 dist/
 build/
 
-# Variables d'environnement
-.env
-.env.local
-.env.*.local
-
-# Données locales du backend
-backend/data/sessions.json
+# Base de données locale du backend
+backend/data/*.db
+backend/data/*.db-journal
+backend/data/*.db-wal
+backend/data/*.db-shm
+backend/data/*.sqlite
+backend/data/*.sqlite3
 
 # Logs
 *.log

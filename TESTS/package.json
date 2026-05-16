@@ -1,0 +1,11 @@
+{
+  "name": "sportacus-tests",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "bun run-tests.js",
+    "test:backend": "bun run-tests.js backend",
+    "test:frontend": "bun run-tests.js frontend",
+    "test:raw": "bun test"
+  }
+}

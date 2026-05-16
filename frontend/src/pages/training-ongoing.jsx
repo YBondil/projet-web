@@ -1,6 +1,14 @@
-import { Show, For, createSignal, createMemo, onCleanup } from "solid-js";
+import {
+  Show,
+  For,
+  createSignal,
+  createMemo,
+  createEffect,
+  onCleanup,
+} from "solid-js";
 import { useNavigate } from "@solidjs/router";
 import { currentSession } from "../store/session.js";
+import { saveCompletedSession } from "../store/completedSessions.js";
 import { EQUIPMENT_LABEL } from "../data/equipment.js";
 
 const DIFFICULTE_LEVELS = [
@@ -31,6 +39,23 @@ export default function TrainingOnGoing() {
 
   const [feedback, setFeedback] = createSignal(null);
   const [feedbacks, setFeedbacks] = createSignal({});
+
+  const [saveState, setSaveState] = createSignal("idle");
+
+  createEffect(() => {
+    if (!finished()) return;
+    if (saveState() !== "idle") return;
+    const session = currentSession();
+    if (!session) return;
+    setSaveState("saving");
+    saveCompletedSession({
+      session,
+      feedbacks: feedbacks(),
+      durationSeconds: elapsed(),
+    })
+      .then(() => setSaveState("saved"))
+      .catch(() => setSaveState("error"));
+  });
 
   const tick = setInterval(() => {
     if (finished()) return;
@@ -157,9 +182,33 @@ export default function TrainingOnGoing() {
               <p class="ongoing-finish-sub">
                 {totalExos()} exercices accomplis
               </p>
-              <button class="btn-primary" onClick={() => navigate("/")}>
-                Retour à l'accueil
-              </button>
+              <p
+                class={`ongoing-finish-save ongoing-finish-save-${saveState()}`}
+              >
+                <Show when={saveState() === "saving"}>
+                  Enregistrement en cours…
+                </Show>
+                <Show when={saveState() === "saved"}>
+                  ✓ Séance ajoutée à « Mon suivi »
+                </Show>
+                <Show when={saveState() === "error"}>
+                  ⚠ Erreur d'enregistrement
+                </Show>
+              </p>
+              <div class="ongoing-finish-actions">
+                <button
+                  class="btn-primary"
+                  onClick={() => navigate("/progress")}
+                >
+                  Voir mon suivi
+                </button>
+                <button
+                  class="btn-secondary"
+                  onClick={() => navigate("/")}
+                >
+                  Retour à l'accueil
+                </button>
+              </div>
             </div>
           }
         >
