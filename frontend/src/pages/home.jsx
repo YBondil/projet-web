@@ -10,7 +10,7 @@ export default function Home() {
         <p class="home-tagline">Ta séance en 30 secondes.</p>
       </div>
 
-      <button class="btn-generate" onClick={() => navigate("/selection")}>
+      <button class="btn-generate" onClick={() => navigate("/start")}>
         Nouvelle séance
       </button>
 

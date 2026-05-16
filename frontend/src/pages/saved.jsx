@@ -124,6 +124,12 @@ export default function SavedSessions() {
                     Lancer
                   </button>
                   <button
+                    class="btn-secondary"
+                    onClick={() => navigate(`/saved/${entry.id}`)}
+                  >
+                    Voir
+                  </button>
+                  <button
                     class="btn-secondary saved-delete"
                     onClick={() => {
                       if (confirm(`Supprimer « ${entry.name} » ?`)) {

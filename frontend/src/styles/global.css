@@ -1945,6 +1945,87 @@ select:focus {
 }
 
 /* ================================================================== */
+/* Start (choix entre generer / reprendre)                              */
+/* ================================================================== */
+
+.start-intro {
+  font-size: 1rem;
+  color: var(--text-soft);
+  text-align: center;
+  margin-bottom: 1.25rem;
+  font-weight: 600;
+}
+
+.start-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.start-choice {
+  background: var(--surface);
+  border: 2px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  text-align: center;
+  cursor: pointer;
+  font-family: inherit;
+  color: var(--text);
+  box-shadow: var(--shadow-flat);
+  transition: transform var(--t), box-shadow var(--t), background var(--t);
+}
+
+.start-choice:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0 rgba(26, 31, 32, 0.95);
+  background: var(--primary-soft);
+}
+
+.start-choice:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 rgba(26, 31, 32, 0.95);
+}
+
+.start-choice-icon {
+  font-size: 2.6rem;
+  line-height: 1;
+}
+
+.start-choice-title {
+  font-size: 1.1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.start-choice-desc {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.45;
+  max-width: 340px;
+}
+
+/* ================================================================== */
+/* Saved detail (voir une seance enregistree)                           */
+/* ================================================================== */
+
+.saved-detail-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.saved-item-actions {
+  flex-wrap: wrap;
+}
+
+/* ================================================================== */
 /* Backend status (Scope 2)                                             */
 /* ================================================================== */
 
