@@ -1,6 +1,11 @@
 import { Show, For } from "solid-js";
 import { useNavigate } from "@solidjs/router";
-import { savedSessions, deleteSavedSession } from "../store/savedSessions.js";
+import {
+  savedSessions,
+  deleteSavedSession,
+  apiStatus,
+  refreshSavedSessions,
+} from "../store/savedSessions.js";
 import { setCurrentSession, setSessionConfig } from "../store/session.js";
 
 const LABEL = {
@@ -46,6 +51,40 @@ export default function SavedSessions() {
         </button>
         <h2>Mes séances</h2>
       </header>
+
+      <div class="api-status-bar">
+        <Show
+          when={apiStatus() === "online"}
+          fallback={
+            <Show
+              when={apiStatus() === "offline"}
+              fallback={
+                <span class="api-status api-status-loading">
+                  <span class="api-status-dot" aria-hidden="true" />
+                  Connexion au serveur…
+                </span>
+              }
+            >
+              <span class="api-status api-status-ko">
+                <span class="api-status-dot" aria-hidden="true" />
+                Hors ligne — mode local
+              </span>
+              <button
+                class="api-status-retry"
+                type="button"
+                onClick={() => refreshSavedSessions()}
+              >
+                Réessayer
+              </button>
+            </Show>
+          }
+        >
+          <span class="api-status api-status-ok">
+            <span class="api-status-dot" aria-hidden="true" />
+            Synchronisé avec le serveur
+          </span>
+        </Show>
+      </div>
 
       <Show
         when={savedSessions().length > 0}

@@ -43,6 +43,72 @@ export default function Training() {
   const [saveName, setSaveName] = createSignal("");
   const [saveDone, setSaveDone] = createSignal(false);
 
+  const [draggedIndex, setDraggedIndex] = createSignal(null);
+  const [dragOverIndex, setDragOverIndex] = createSignal(null);
+  const [dropPosition, setDropPosition] = createSignal(null);
+
+  const clearDrag = () => {
+    setDraggedIndex(null);
+    setDragOverIndex(null);
+    setDropPosition(null);
+  };
+
+  const reorderExos = (from, to) => {
+    if (from == null || to == null || from === to) return;
+    const exos = [...currentSession().exercises];
+    const [moved] = exos.splice(from, 1);
+    exos.splice(to, 0, moved);
+    updateExercises(exos);
+  };
+
+  const makeDragHandlers = (idx) => ({
+    onDragStart: (e) => {
+      setDraggedIndex(idx);
+      e.dataTransfer.effectAllowed = "move";
+      try {
+        e.dataTransfer.setData("text/plain", String(idx));
+      } catch {}
+    },
+    onDragOver: (e) => {
+      if (draggedIndex() == null) return;
+      e.preventDefault();
+      e.dataTransfer.dropEffect = "move";
+      const rect = e.currentTarget.getBoundingClientRect();
+      const midY = rect.top + rect.height / 2;
+      setDragOverIndex(idx);
+      setDropPosition(e.clientY < midY ? "above" : "below");
+    },
+    onDragLeave: (e) => {
+      if (e.currentTarget.contains(e.relatedTarget)) return;
+      if (dragOverIndex() === idx) {
+        setDragOverIndex(null);
+        setDropPosition(null);
+      }
+    },
+    onDrop: (e) => {
+      e.preventDefault();
+      const from = draggedIndex();
+      if (from == null) return clearDrag();
+      let to = idx + (dropPosition() === "below" ? 1 : 0);
+      if (from < to) to -= 1;
+      reorderExos(from, to);
+      clearDrag();
+    },
+    onDragEnd: () => clearDrag(),
+  });
+
+  const dragStateFor = (idx) => ({
+    isDragging: draggedIndex() === idx,
+    dropAbove:
+      dragOverIndex() === idx &&
+      dropPosition() === "above" &&
+      draggedIndex() !== idx,
+    dropBelow:
+      dragOverIndex() === idx &&
+      dropPosition() === "below" &&
+      draggedIndex() !== idx,
+  });
+
   const regenerer = () => {
     const nouvelle = generateTraining(sessionConfig());
     setCurrentSession(nouvelle);
@@ -169,6 +235,8 @@ export default function Training() {
                 exercise={exo}
                 index={i() + 1}
                 onRemove={() => removeExo(exo.id)}
+                dragHandlers={makeDragHandlers(i())}
+                dragState={dragStateFor(i())}
               />
             )}
           </For>
