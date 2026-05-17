@@ -41,12 +41,17 @@ describe("storage/exercises.js — schéma", () => {
     expect(names).toEqual(
       [
         "id",
+        "source",
         "group_name",
         "name",
         "type",
         "equipment",
         "muscles_json",
         "video",
+        "target_load_kg",
+        "target_sets",
+        "target_reps",
+        "hidden_until",
         "created_at",
       ].sort()
     );

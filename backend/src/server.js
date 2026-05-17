@@ -4,6 +4,7 @@ import { health } from "./routes/health.js";
 import { sessions } from "./routes/sessions.js";
 import { exercises } from "./routes/exercises.js";
 import { completedSessions } from "./routes/completed-sessions.js";
+import { chat } from "./routes/chat.js";
 
 const PORT = 3000;
 
@@ -22,6 +23,7 @@ app.route("/api/health", health);
 app.route("/api/sessions", sessions);
 app.route("/api/exercises", exercises);
 app.route("/api/completed-sessions", completedSessions);
+app.route("/api/chat", chat);
 
 app.notFound((c) => c.json({ error: "not_found" }, 404));
 

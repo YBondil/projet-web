@@ -13,10 +13,22 @@ import SavedSessions from "./pages/saved.jsx";
 import SavedDetail from "./pages/savedDetail.jsx";
 import TrainingOnGoing from "./pages/training-ongoing.jsx";
 import PastTraining from "./pages/pastTraining.jsx";
+import CoachFab from "./components/CoachFab.jsx";
+
+// Layout racine : rendu autour de chaque page. On y monte le bouton coach
+// pour qu'il soit accessible quelle que soit la route.
+function RootLayout(props) {
+  return (
+    <>
+      {props.children}
+      <CoachFab />
+    </>
+  );
+}
 
 export default function App() {
   return (
-    <Router>
+    <Router root={RootLayout}>
       <Route path="/" component={Home} />
       <Route path="/start" component={Start} />
       <Route path="/selection" component={Configure} />
