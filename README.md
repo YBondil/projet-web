@@ -132,8 +132,8 @@ bun run dev   # UI sur http://localhost:5173
 
 
 ### Design + navigation
-- [x] Design responsive — thème clair, angulaire (radius `4px`, bordures `2px`, ombres « flat » décalées, fond crème + primary teal + accent ambré)
-- [x] Navigation complète entre toutes les pages (15 routes), breadcrumb sur les sous-pages de « Mon suivi »
+- [x] Design responsive — thème clair, angulaire
+- [x] Navigation complète entre toutes les pages
 
 ---
 
@@ -151,7 +151,7 @@ bun run dev   # UI sur http://localhost:5173
 projet-web/
 ├── frontend/
 │   └── src/
-│       ├── index.jsx                  → point d'entrée, monte le DOM
+│       ├── index.jsx                  
 │       ├── App.jsx                    → routeur (15 routes)
 │       ├── api/
 │       │   ├── sessions.js            → wrapper fetch sessions (AbortController, timeout 3 s)
@@ -188,7 +188,7 @@ projet-web/
 │       └── styles/
 │           └── global.css             → tout le CSS (thème clair, angulaire, variables)
 │
-├── backend/
+└── backend/
    ├── package.json
    ├── README.md
    ├── data/                          → soma.db SQLite (créée à la volée, gitignored)
