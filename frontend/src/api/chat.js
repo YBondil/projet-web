@@ -2,7 +2,7 @@
 // On utilise `fetch` + ReadableStream (pas EventSource — il ne supporte pas POST).
 // On parse manuellement le format SSE : lignes "data: <json>\n\n".
 
-const API_URL = "http://localhost:3000";
+import { API_URL } from "./base.js";
 
 export async function fetchChatStatus() {
   try {
@@ -40,7 +40,10 @@ export async function executeChatAction({ tool, args }) {
 export async function streamChat({ messages, signal, onEvent }) {
   const res = await fetch(`${API_URL}/api/chat`, {
     method: "POST",
-    headers: { "Content-Type": "application/json", Accept: "text/event-stream" },
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "text/event-stream",
+    },
     body: JSON.stringify({ messages }),
     signal,
   });
@@ -78,9 +81,7 @@ export async function streamChat({ messages, signal, onEvent }) {
       while ((sep = buffer.indexOf("\n\n")) !== -1) {
         const chunk = buffer.slice(0, sep);
         buffer = buffer.slice(sep + 2);
-        const dataLine = chunk
-          .split("\n")
-          .find((l) => l.startsWith("data:"));
+        const dataLine = chunk.split("\n").find((l) => l.startsWith("data:"));
         if (!dataLine) continue;
         const json = dataLine.slice(5).trim();
         if (!json) continue;

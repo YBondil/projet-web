@@ -12,8 +12,8 @@ backend/data/*.db-wal
 backend/data/*.db-shm
 backend/data/*.sqlite
 backend/data/*.sqlite3
-
-# Logs
+TESTS/
+Logs
 *.log
 npm-debug.log*
 bun-debug.log*

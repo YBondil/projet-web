@@ -16,7 +16,7 @@ app.use(
     origin: (origin) => origin ?? "*",
     allowMethods: ["GET", "POST", "DELETE", "OPTIONS"],
     allowHeaders: ["Content-Type"],
-  })
+  }),
 );
 
 app.route("/api/health", health);
@@ -36,5 +36,6 @@ console.log(`[server] SOMA API listening on http://localhost:${PORT}`);
 
 export default {
   port: PORT,
+  host: "0.0.0.0",
   fetch: app.fetch,
 };

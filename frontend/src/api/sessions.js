@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000";
+import { API_URL } from "./base.js";
 const TIMEOUT_MS = 3000;
 
 async function apiFetch(path, options = {}) {
